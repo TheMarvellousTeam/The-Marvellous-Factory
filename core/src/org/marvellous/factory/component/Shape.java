@@ -14,30 +14,38 @@ public class Shape extends Component implements Poolable {
     public static final int INPUT = 2;
     public static final int OUTPUT = 3;
 
-    private int xOrigin = 0, yOrigin = 0;
+    private int originX = 0, originY = 0;
 
     private int[][] shape;
 
-    public int getxOrigin() {
-	return xOrigin;
+    public int getOriginX() {
+	return originX;
     }
 
-    public void setxOrigin(int xOrigin) {
-	this.xOrigin = xOrigin;
+    public void setOriginX(int xOrigin) {
+	this.originX = xOrigin;
     }
 
-    public int getyOrigin() {
-	return yOrigin;
+    public int getOriginY() {
+	return originY;
     }
 
-    public void setyOrigin(int yOrigin) {
-	this.yOrigin = yOrigin;
+    public void setOriginY(int yOrigin) {
+	this.originY = yOrigin;
+    }
+
+    public int[][] getShape() {
+	return shape;
+    }
+
+    public void setShape(int[][] shape) {
+	this.shape = shape;
     }
 
     @Override
     public void reset() {
-	xOrigin = 0;
-	yOrigin = 0;
+	originX = 0;
+	originY = 0;
 	shape = null;
     }
 
