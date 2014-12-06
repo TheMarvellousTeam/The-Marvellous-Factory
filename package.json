@@ -7,7 +7,7 @@
   "author": "Platane <me@platane.me>",
 
   "dependencies": {
-    "pixi" : "*"
+    "pixi.js" : "*"
   },
 
   "devDependencies" : {
