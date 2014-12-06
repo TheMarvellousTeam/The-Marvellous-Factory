@@ -1,6 +1,6 @@
 var factory = require('../tests/sampleFactory')
   , mainRenderer = require('./renderer/main')
-  , kitchen = Object.create( require('./model/kitchen') )
+  , kitchen = Object.create( require('./model/Kitchen') )
 
 
 factory.copyKitchen( kitchen )
