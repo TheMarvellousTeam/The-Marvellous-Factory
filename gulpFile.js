@@ -37,7 +37,7 @@ gulp.task('test', function () {
     var runner = require('./node_modules/jasmine-node/lib/jasmine-node/runner.js');
 
     runner.runSpecs({
-        specFolders : ['./specs'],
+        specFolders : ['./tests/specs'],
         matchAll : true,
     });
 });
