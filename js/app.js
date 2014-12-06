@@ -1,8 +1,9 @@
 var factory = require('../tests/sampleFactory')
   , mainRenderer = require('./renderer/main')
+  , kitchen = Object.create( require('./model/kitchen') )
 
-var blocks = factory.get()
+
+factory.copyKitchen( kitchen )
 
 var mr = Object.create( mainRenderer ).init()
-
-mr.render(blocks)
+mr.render( kitchen )

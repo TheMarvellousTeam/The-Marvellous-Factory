@@ -1,15 +1,16 @@
 var PIXI = require('pixi.js')
 
 
-var init = function(){
-    this.stage = new PIXI.Stage(0xFFFFFF);
+var init = function( info ){
+    this.layer = new PIXI.DisplayObjectContainer;
+
+    this.tileSize = info.tileSize
+
 
     return this
 }
 
-var tileSize = 50
-
-var initBlockSprite = function( block ){
+var initBlockSprite = function( block , ts ){
     var graphics = new PIXI.Graphics();
 
     // set a fill and line style
@@ -19,9 +20,9 @@ var initBlockSprite = function( block ){
 
     // draw a shape
     graphics.moveTo(0,0);
-    graphics.lineTo(tileSize, 0);
-    graphics.lineTo(tileSize, tileSize);
-    graphics.lineTo(0, tileSize);
+    graphics.lineTo(ts, 0);
+    graphics.lineTo(ts, ts);
+    graphics.lineTo(0, ts);
     graphics.lineTo(0, 0);
 
     return graphics
@@ -29,26 +30,27 @@ var initBlockSprite = function( block ){
 
 var renderId=0
 var render = function( blocks ){
-    var stage = this.stage
+    var layer = this.layer
+    var ts =this.tileSize
 
     renderId ++
     blocks.forEach(function(block){
         var sprite;
         if (!(sprite = block._sprite)){
-            sprite = initBlockSprite( block )
-            stage.addChild(sprite)
+            sprite = initBlockSprite( block , ts )
+            layer.addChild(sprite)
         }
 
         sprite._m_renderId = renderId
 
         // alter sprite geometry
-        sprite.position.x = block.origin.x
-        sprite.position.y = block.origin.y
+        sprite.position.x = block.origin.x * ts
+        sprite.position.y = block.origin.y * ts
     });
 
 
     // TODO clean up useless sprite
-    this.stage.children
+    this.layer.children
 
 }
 

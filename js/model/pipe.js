@@ -16,7 +16,6 @@ var production = function(type) {
 
 module.exports = Object.create( Abstract )
 .extend({
-
 	init: function(type) {
 		this.type = type ;
 		this.bufferSize = 1 ;
@@ -39,9 +38,8 @@ module.exports = Object.create( Abstract )
 			this.buffer.push(this.input[i].next());
 		}
 	},
-	
+
 	produce: function() {
 		production.call(this, this.type);
 	},
-
 })

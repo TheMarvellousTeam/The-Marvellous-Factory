@@ -8,7 +8,23 @@ var get = function( k ){
     })
 }
 
+var copyKitchen = function( kitchen , k ){
+
+    var s = samples[(0|k)%samples.length]
+
+    kitchen.init( s.width , s.height )
+
+    s.blocks
+    .map(function(o){
+        return Object.create(block).extend( o )
+    })
+    .forEach(kitchen.addBlock.bind(kitchen))
+
+    return kitchen
+}
+
 
 module.exports = {
-    get : get
+    get : get,
+    copyKitchen : copyKitchen
 }
