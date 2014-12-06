@@ -18,33 +18,33 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  */
 public class RenderSystem extends SortedIteratingSystem {
 
-	/**
-	 * RenderLayout are used for the painter's algorithm.
-	 * 
-	 * @author NiZiL
-	 *
-	 */
-	public static enum RenderLayout {
+    /**
+     * RenderLayout are used for the painter's algorithm.
+     * 
+     * @author NiZiL
+     *
+     */
+    public static enum RenderLayout {
 
-	}
+    }
 
-	private SpriteBatch batch;
+    private SpriteBatch batch;
 
-	@SuppressWarnings("unchecked")
-	public RenderSystem(SpriteBatch batch) {
-		super(Family.one(Renderable.class).get(), new Comparator<Entity>() {
-			@Override
-			public int compare(Entity e1, Entity e2) {
-				return Renderable.mapper.get(e1).getLayout()
-						.compareTo(Renderable.mapper.get(e2).getLayout());
-			}
-		});
-		this.batch = batch;
-	}
+    @SuppressWarnings("unchecked")
+    public RenderSystem(SpriteBatch batch) {
+	super(Family.one(Renderable.class).get(), new Comparator<Entity>() {
+	    @Override
+	    public int compare(Entity e1, Entity e2) {
+		return Renderable.mapper.get(e1).getLayout()
+			.compareTo(Renderable.mapper.get(e2).getLayout());
+	    }
+	});
+	this.batch = batch;
+    }
 
-	@Override
-	protected void processEntity(Entity entity, float deltaTime) {
-		Renderable.mapper.get(entity).render(batch, deltaTime);
-	}
+    @Override
+    protected void processEntity(Entity entity, float deltaTime) {
+	// TODO
+    }
 
 }
