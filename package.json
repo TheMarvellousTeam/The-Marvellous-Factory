@@ -1,10 +1,14 @@
 {
-  "name": "The-marvellous-factory",
+  "name": "The-Marvellous-Factory",
   "version": "0.0.1",
 
-  "description": "LD 31",
+  "description": "Ludum Dare #31",
 
-  "author": "Platane <me@platane.me>",
+  "author": [
+    "Platane <me@platane.me>",
+    "NiZiL",
+    "Akharii"
+  ],
 
   "dependencies": {
     "pixi.js" : "*"
