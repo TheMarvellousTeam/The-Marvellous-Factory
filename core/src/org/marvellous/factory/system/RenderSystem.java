@@ -3,6 +3,7 @@ package org.marvellous.factory.system;
 import java.util.Comparator;
 
 import org.marvellous.factory.component.Renderable;
+import org.marvellous.factory.component.Shape;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
@@ -32,19 +33,24 @@ public class RenderSystem extends SortedIteratingSystem {
 
     @SuppressWarnings("unchecked")
     public RenderSystem(SpriteBatch batch) {
-	super(Family.one(Renderable.class).get(), new Comparator<Entity>() {
-	    @Override
-	    public int compare(Entity e1, Entity e2) {
-		return Renderable.mapper.get(e1).getLayout()
-			.compareTo(Renderable.mapper.get(e2).getLayout());
-	    }
-	});
+	super(Family.all(Shape.class, Renderable.class).get(),
+		new Comparator<Entity>() {
+		    @Override
+		    public int compare(Entity e1, Entity e2) {
+			return Renderable.mapper
+				.get(e1)
+				.getLayout()
+				.compareTo(
+					Renderable.mapper.get(e2).getLayout());
+		    }
+		});
 	this.batch = batch;
     }
 
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
+	Renderable renderable = Renderable.mapper.get(entity);
+	Shape shape = Shape.mapper.get(entity);
 	// TODO
     }
-
 }
