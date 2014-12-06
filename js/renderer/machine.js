@@ -12,15 +12,53 @@ var init = function( info ){
 var initBlockSprite = function( block , ts ){
     var container = new PIXI.DisplayObjectContainer;
 
+    var color = 0|(Math.random()*(255*255*255))
+
     for(var y=block.shape.length; y--; )
     for(var x=block.shape[y].length; x--; )
-        if( block.shape[y][x] )
         {
-            var square = initSquareSprite( ts , block.shape[y][x] == 1 ? 0x126712 : 0x451200 )
-            square.position.x = x*ts
-            square.position.y = y*ts
+            if( block.shape[y][x] == 1 || block.shape[y][x] == 3 )
+            {
+                var square = initSquareSprite( ts , color )
+                square.position.x = x*ts
+                square.position.y = y*ts
 
-            container.addChild( square )
+                container.addChild( square )
+            }
+            if( block.shape[y][x] == 2 )
+            {
+                var round = new PIXI.Graphics();
+
+                round.beginFill( 0xAB1298 , 0.5 );
+
+                round.moveTo(ts*0.2,ts*0.2);
+                round.lineTo(ts*0.6, ts*0.2);
+                round.lineTo(ts*0.6, ts*0.6);
+                round.lineTo(ts*0.2, ts*0.6);
+                round.lineTo(ts*0.2, ts*0.2);
+
+                round.position.x = (x)*ts
+                round.position.y = (y)*ts
+
+                container.addChild( round )
+            }
+            if( block.shape[y][x] == 3 )
+            {
+                var round = new PIXI.Graphics();
+
+                round.beginFill( 0xba120a , 0.5 );
+
+                round.moveTo(ts*0.2,ts*0.2);
+                round.lineTo(ts*0.4, ts*0.2);
+                round.lineTo(ts*0.4, ts*0.4);
+                round.lineTo(ts*0.2, ts*0.4);
+                round.lineTo(ts*0.2, ts*0.2);
+
+                round.position.x = (x+0.2)*ts
+                round.position.y = (y+0.2)*ts
+
+                container.addChild( round )
+            }
         }
 
     return container
@@ -29,7 +67,7 @@ var initBlockSprite = function( block , ts ){
 var initSquareSprite = function( ts , color ){
     var graphics = new PIXI.Graphics();
 
-    graphics.beginFill(color || 0xFF3300);
+    graphics.beginFill( color , 0.2 );
 
     graphics.moveTo(0,0);
     graphics.lineTo(ts, 0);
