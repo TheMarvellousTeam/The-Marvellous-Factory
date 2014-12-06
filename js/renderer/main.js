@@ -40,6 +40,7 @@ var render = function( kitchen ){
 }
 
 module.exports = {
+    update : update,
     render : render,
     init: init
 }
