@@ -1,0 +1,28 @@
+{
+  "name": "The-marvellous-factory",
+  "version": "0.0.1",
+
+  "description": "LD 31",
+
+  "author": "Platane <me@platane.me>",
+
+  "dependencies": {
+    "pixi" : "*"
+  },
+
+  "devDependencies" : {
+    "jasmine-node" : "git://github.com/mhevery/jasmine-node.git#Jasmine2.0",
+    "browserify" : "*",
+    "less" :"*",
+    "gulp" : "*",
+    "gulp-watch" : "*",
+    "gulp-autoprefixer" : "*",
+    "gulp-rename" : "*",
+    "gulp-browserify" : "*"
+  },
+
+  "scripts" : {
+    "test" : "node ./node_modules/jasmine-node/bin/jasmine-node --matchAll ./specs/",
+    "prepublish" : "node ./node_modules/browserify/bin/cmd.js js/app.js -o js/bundle.js --debug"
+  }
+}
