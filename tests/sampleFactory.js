@@ -23,8 +23,23 @@ var copyKitchen = function( kitchen , k ){
     return kitchen
 }
 
+var copyStore = function( store, k ) {
+    var s = samples[(0|k)%samples.length]
+
+    store.init()
+
+    s.store
+    .map(function(o){
+        return Object.create(block).extend( o )
+    })
+    .forEach(store.addBlock.bind(store))
+
+    return store
+}
+
 
 module.exports = {
     get : get,
-    copyKitchen : copyKitchen
+    copyKitchen : copyKitchen,
+    copyStore : copyStore
 }

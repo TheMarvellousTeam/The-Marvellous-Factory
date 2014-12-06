@@ -1,10 +1,11 @@
 var PIXI = require('pixi.js')
   , machineRenderer = require('./machine')
   , gridRenderer = require('./grid')
+  , menuRenderer = require('./menu')
 
 
 var bootstrapPixi = function(){
-    var renderer = PIXI.autoDetectRenderer(16*48, 16*48);
+    var renderer = PIXI.autoDetectRenderer(16*48 + 250, 16*48);
 	document.body.appendChild(renderer.view);
 	renderer.view.style.position = "absolute";
     return renderer
@@ -22,19 +23,20 @@ var init = function() {
 
     this.machineRenderer = Object.create( machineRenderer ).init(info)
     this.gridRenderer = Object.create( gridRenderer ).init(info)
+    this.menuRenderer = Object.create( menuRenderer ).init(info)
 
     this.stage.addChild( this.machineRenderer.layer )
     this.stage.addChild( this.gridRenderer.layer )
-
+    this.stage.addChild( this.menuRenderer.layer )
 
     return this
 }
 
-var render = function( kitchen ){
+var render = function( kitchen, store ){
 
     this.gridRenderer.render( kitchen )
     this.machineRenderer.render( kitchen.blocks )
-
+    this.menuRenderer.render( store )
 
     this.renderer.render( this.stage )
 }

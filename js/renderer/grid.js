@@ -20,7 +20,6 @@ var initGridSprite = function( ts  ){
 
     graphics.lineStyle(1, 0x999999, 1);
 
-
     for(var x=width;x--;) {
         graphics.moveTo(x*ts, 0);
         graphics.lineTo(x*ts, height*ts);

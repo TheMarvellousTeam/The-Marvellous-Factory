@@ -14,6 +14,26 @@ module.exports = [
             ]
         }
     ],
+    store: [
+        {
+            origin: {x:25, y:25},
+            type: "Truc1",
+            shape: [
+                [3,1,2],
+                [1,1,1]
+            ]
+        },
+        {
+            origin: {x: 25, y: 75},
+            type: "Truc2",
+            shape: [
+                [1,2,2,1],
+                [3,1,1,3],
+                [3,1,1,3],
+                [1,1,1,1]
+            ]
+        }
+    ]
 },
 {
     label: 'multiples blocks',
