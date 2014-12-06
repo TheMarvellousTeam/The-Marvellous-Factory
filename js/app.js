@@ -1,4 +1,8 @@
 var factory = require('../tests/sampleFactory')
+  , mainRenderer = require('./renderer/main')
 
 var blocks = factory.get()
-blocks[0].getInputs()
+
+var mr = Object.create( mainRenderer ).init()
+
+mr.render(blocks)
