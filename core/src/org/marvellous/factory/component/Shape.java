@@ -1,5 +1,9 @@
 package org.marvellous.factory.component;
 
+import java.util.ArrayList;
+
+import utils.Point;
+
 import com.badlogic.ashley.core.Component;
 import com.badlogic.gdx.utils.Pool.Poolable;
 
@@ -20,5 +24,23 @@ public class Shape extends Component implements Poolable {
 	yOrigin = 0;
 	shape = null;
     }
-
+    
+    private ArrayList<Point> scanCell(int symbol){
+    	ArrayList<Point> cells = new ArrayList<Point>();
+    	for( int x = shape.length; x>=0 ; x--)
+        for( int y = shape[x].length; y>=0 ; y--)
+        
+        	if( shape[x][y] == symbol )
+        		cells.add( new Point(x,y) );
+        
+        return cells;
+    }
+    
+    public ArrayList<Point> getInputs(){
+    	return scanCell( INPUT );
+    }
+    
+    public ArrayList<Point> getOuputs(){
+    	return scanCell( OUTPUT );
+    }
 }
