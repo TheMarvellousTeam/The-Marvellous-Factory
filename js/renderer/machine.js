@@ -6,19 +6,31 @@ var init = function( info ){
 
     this.tileSize = info.tileSize
 
-
     return this
 }
 
 var initBlockSprite = function( block , ts ){
+    var container = new PIXI.DisplayObjectContainer;
+
+    for(var y=block.shape.length; y--; )
+    for(var x=block.shape[y].length; x--; )
+        if( block.shape[y][x] )
+        {
+            var square = initSquareSprite( ts , block.shape[y][x] == 1 ? 0x126712 : 0x451200 )
+            square.position.x = x*ts
+            square.position.y = y*ts
+
+            container.addChild( square )
+        }
+
+    return container
+}
+
+var initSquareSprite = function( ts , color ){
     var graphics = new PIXI.Graphics();
 
-    // set a fill and line style
-    graphics.beginFill(0xFF3300);
-    graphics.lineStyle(1, 0xffd900, 1);
+    graphics.beginFill(color || 0xFF3300);
 
-
-    // draw a shape
     graphics.moveTo(0,0);
     graphics.lineTo(ts, 0);
     graphics.lineTo(ts, ts);

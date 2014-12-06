@@ -23,16 +23,18 @@ var init = function() {
     this.machineRenderer = Object.create( machineRenderer ).init(info)
     this.gridRenderer = Object.create( gridRenderer ).init(info)
 
-    this.stage.addChild( this.gridRenderer.layer )
     this.stage.addChild( this.machineRenderer.layer )
+    this.stage.addChild( this.gridRenderer.layer )
+
 
     return this
 }
 
 var render = function( kitchen ){
 
-    this.machineRenderer.render( kitchen.blocks )
     this.gridRenderer.render( kitchen )
+    this.machineRenderer.render( kitchen.blocks )
+
 
     this.renderer.render( this.stage )
 }
