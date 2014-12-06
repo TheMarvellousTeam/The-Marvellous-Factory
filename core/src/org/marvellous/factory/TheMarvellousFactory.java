@@ -1,27 +1,41 @@
 package org.marvellous.factory;
 
+import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class TheMarvellousFactory extends ApplicationAdapter {
-	SpriteBatch batch;
-	Texture img;
-	
-	@Override
-	public void create () {
-		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
-	}
+    private static final int POOL_ENTITY_INIT_SIZE = 10,
+	    POOL_ENTITY_MAX_SIZE = 50, POOL_COMPONENT_INIT_SIZE = 10,
+	    POOL_COMPONENT_MAX_SIZE = 50;
 
-	@Override
-	public void render () {
-		Gdx.gl.glClearColor(1, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.begin();
-		batch.draw(img, 0, 0);
-		batch.end();
-	}
+    SpriteBatch batch;
+
+    PooledEngine engine;
+
+    @Override
+    public void create() {
+	batch = new SpriteBatch();
+
+	engine = new PooledEngine(POOL_ENTITY_INIT_SIZE, POOL_ENTITY_MAX_SIZE,
+		POOL_COMPONENT_INIT_SIZE, POOL_COMPONENT_MAX_SIZE);
+
+	Asset.load();
+    }
+
+    @Override
+    public void render() {
+	batch.begin();
+	engine.update(Gdx.graphics.getDeltaTime());
+	batch.end();
+    }
+
+    @Override
+    public void dispose() {
+	super.dispose();
+	batch.dispose();
+
+	Asset.dispose();
+    }
 }
