@@ -100,11 +100,11 @@ gulp.task('less', function () {
 
 gulp.task('watch', function () {
 
-	gulp.watch( ['css/**/*.less'] , ['less'] )
+	//gulp.watch( ['css/**/*.less'] , ['less'] )
 
-	gulp.watch( ['js/**/*', '!js/bundle.js'] , ['browserify'] )
+	gulp.watch( ['tests/**/*' , 'js/**/*', '!js/bundle.js'] , ['browserify'] )
 
 });
 
 
-gulp.task('default', [ 'browserify' , 'less' , 'watch' ]);
+gulp.task('default', [ 'browserify' , 'watch' ]);
