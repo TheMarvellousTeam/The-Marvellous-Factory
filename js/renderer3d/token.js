@@ -39,8 +39,8 @@ var spawn = function( data ){
     var token = data.token
 
     var sp = new THREE.Sprite( this.spriteMaterials[ token.type ] || this.spriteMaterials.default );
-    sp.scale.x= sp.scale.y= sp.scale.z= 0.2 + Math.random()*0.5
-    sp.position.y = 0.9 + Math.random()*0.5
+    sp.scale.x= sp.scale.y= sp.scale.z= 0.3
+
     sp.model = token
 
     this.layer.add( sp )
@@ -52,7 +52,7 @@ var render = function(  ){
 
         var p = model.getPosition()
         token.position.x = p.x + 0.5
-
+        token.position.y = 0.6
         token.position.z = p.y + 0.5
     })
 }
