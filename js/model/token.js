@@ -1,8 +1,14 @@
 var Abstract = require('../utils/Abstract')
   , ed = require('../system/eventDispatcher')
 
-var init = function( ){
 
+
+
+var init = function( o ){
+
+    o = o||{}
+
+    this.type = o.type
     this.age = 0
 
     ed.listen('update' , update.bind(this), this)

@@ -6,7 +6,7 @@ var sanity = function( graph ){
     //TODO
     // check for token duplication
 }
-
+/*
 describe('flow ', function(){
 
     describe('dummy ', function(){
@@ -37,3 +37,4 @@ describe('flow ', function(){
 
     })
 })
+*/

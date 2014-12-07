@@ -14,6 +14,7 @@ var bootstrapThree = function(){
 
 	var controls = this.controls =  new THREE.OrbitControls( camera );
 	controls.center.x = 8
+	controls.center.y = 1
 	controls.center.z = 8
 	controls.addEventListener( 'change', function render() {
         ed.dispatch('render3D-camera-change')

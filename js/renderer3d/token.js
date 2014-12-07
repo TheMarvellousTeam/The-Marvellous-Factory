@@ -17,18 +17,30 @@ var initSpriteMaterial = function(){
     this.spriteMaterials = {}
 
     var texture = THREE.ImageUtils.loadTexture( "./assets/crab-colour-reduce.svg" );
-    this.spriteMaterials[ 'default' ] = new THREE.SpriteMaterial( { map: texture, color: 0xffffff, fog: true } );
+    this.spriteMaterials[ 'B' ] = new THREE.SpriteMaterial( { map: texture, fog: true } );
+
+    var texture = THREE.ImageUtils.loadTexture( "./assets/crab.svg" );
+    this.spriteMaterials[ 'A' ] = new THREE.SpriteMaterial( { map: texture, fog: true } );
+
+    this.spriteMaterials[ 'C' ] = new THREE.SpriteMaterial( { color:'#f127ff', fog: true } );
+    this.spriteMaterials[ 'D' ] = new THREE.SpriteMaterial( { color:'#12123f', fog: true } );
+    this.spriteMaterials[ 'default' ] = new THREE.SpriteMaterial( { color:'#ffffff', fog: true } );
 }
 
 var remove = function( data ){
     var token = data.token
+
+    for( var i =this.layer.children.length; i--;)
+        if( this.layer.children[i].model == token )
+            this.layer.remove( this.layer.children[i] )
 }
 
 var spawn = function( data ){
     var token = data.token
 
-    var sp = new THREE.Sprite( this.spriteMaterials[ 'default' ] );
-    sp.scale.x= sp.scale.y= sp.scale.z= 0.5
+    var sp = new THREE.Sprite( this.spriteMaterials[ token.type ] || this.spriteMaterials.default );
+    sp.scale.x= sp.scale.y= sp.scale.z= 0.2 + Math.random()*0.5
+    sp.position.y = 0.9 + Math.random()*0.5
     sp.model = token
 
     this.layer.add( sp )
@@ -40,7 +52,7 @@ var render = function(  ){
 
         var p = model.getPosition()
         token.position.x = p.x + 0.5
-        token.position.y = 1.1
+
         token.position.z = p.y + 0.5
     })
 }

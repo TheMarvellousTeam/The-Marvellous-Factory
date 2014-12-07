@@ -1,10 +1,10 @@
-var machines = {
+module.exports = {
     'conveyor': {
         description: 'unit conveyor',
         recipes: [
             {
-                input : ['all'],
-                output : ['all'],
+                inputs : {'all':1},
+                outputs : {'all':1},
                 delay : 120
             }
         ],
@@ -13,41 +13,13 @@ var machines = {
         cost: 1,
     },
 
-    'swichable fork': {
-        description: 'fork an input into two outputs',
-        recipes: [
-            {
-                input : ['all'],
-                output : ['all'],
-                delay : 120
-            }
-        ],
-        storage: 1,
-        shape:[[3,2,3]],
-        cost: 1,
-    },
-
-    'switchable join': {
-        description: 'join two inputs into one ouput',
-        recipes: [
-            {
-                input : ['all'],
-                output : ['all'],
-                delay : 120
-            }
-        ],
-        storage: 1,
-        shape:[[2,3,2]],
-        cost: 1,
-    },
-
     'buffer': {
         description: 'store tokens',
         recipes: [
             {
-                input : ['all'],
-                output : ['all'],
-                delay : 360
+                inputs : {'all':1},
+                outputs : {'all':1},
+                delay : 120
             }
         ],
         storage: 8,
@@ -59,12 +31,18 @@ var machines = {
         description: 'a machine, whatever',
         recipes: [
             {
-                input : ['raw crab'],
-                output : ['washed crab'],
-                delay : 360
-            }
+                inputs : {
+                    'B': 1,
+                    'A': 2,
+                },
+                outputs : {
+                    'C': 1,
+                    //'D': 2,
+                },
+                delay : 200
+            },
         ],
-        storage: 2,
+        storage: 5,
         shape:[
             [0,2,0],
             [1,1,1],

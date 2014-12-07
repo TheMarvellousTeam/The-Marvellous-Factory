@@ -30,7 +30,7 @@ var renderer = Object.create( mainRenderer ).init( modelBall )
 var menu = Object.create( menuRenderer ).init()
 
 // test
-testFactory.copyKitchen( kitchen , 14 )
+testFactory.copyKitchen( kitchen , 8 )
 
 // start render loop
 
