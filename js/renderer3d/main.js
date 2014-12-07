@@ -11,7 +11,7 @@ var bootstrapThree = function(){
 	camera.position.z = 7;
 	camera.position.y = 20;
 
-	var controls = new THREE.OrbitControls( camera );
+	var controls = this.controls =  new THREE.OrbitControls( camera );
 	controls.center.x = 8
 	controls.center.z = 8
 	controls.addEventListener( 'change', function render() {
@@ -55,6 +55,9 @@ var init = function( modelBall ) {
 
     this.scene.add( this.machineRenderer.layer )
     this.scene.add( this.gridRenderer.layer )
+
+
+    this.userInput = Object.create( userInput ).init( this.scene , this.camera, this.renderer.domElement )
 
     return this
 }
