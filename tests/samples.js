@@ -220,9 +220,9 @@ module.exports = [
     blocks: [
         {
             origin: {x:5,y:5},
-            type: 'conveyor',
+            type: 'emiter',
             shape: [
-                [2,3]
+                [0,3]
             ]
         },
         {

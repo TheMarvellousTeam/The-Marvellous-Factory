@@ -3,6 +3,7 @@ var gulp = require('gulp')
   , watch = require('gulp-watch')
   , rename = require('gulp-rename')
   , browserify = require('gulp-browserify')
+  , connect = require('gulp-connect')
   , autoprefixer = require('gulp-autoprefixer')
   , less =require('less')
   , Stream = require('stream').Stream
@@ -39,6 +40,14 @@ gulp.task('test', function () {
     runner.runSpecs({
         specFolders : ['./tests/specs'],
         matchAll : true,
+    });
+});
+
+gulp.task('serve', function () {
+    connect.server({
+        root: '.',
+        livereload: false,
+        port : 8081
     });
 });
 
@@ -107,4 +116,4 @@ gulp.task('watch', function () {
 });
 
 
-gulp.task('default', [ 'browserify' , 'watch' ]);
+gulp.task('default', [ 'browserify' , 'watch' , 'serve' ]);

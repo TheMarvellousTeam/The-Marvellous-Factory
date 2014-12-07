@@ -28,7 +28,7 @@ productionPhase.init( modelBall )
 var renderer = Object.create( mainRenderer ).init( modelBall )
 
 // test
-testFactory.copyKitchen( kitchen , 11 )
+testFactory.copyKitchen( kitchen , 13 )
 
 // start render loop
 

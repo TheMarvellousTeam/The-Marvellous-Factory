@@ -31,6 +31,7 @@ var buildFormBlocks = function( blocks ){
         var A = PipeFactory.create( blocks[i] )
 
         blocks[i].pipe = A
+        A.machine = blocks[i]
 
         var Ai = blocks[i].getInputs()
         var Ao = blocks[i].getOutputs()

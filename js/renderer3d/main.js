@@ -1,5 +1,6 @@
 var machineRenderer = require('./machine')
   , gridRenderer = require('./grid')
+  , tokenRenderer = require('./token')
   , userInput = require('./userInput')
   , ed = require('../system/eventDispatcher')
 
@@ -49,11 +50,14 @@ var init = function( modelBall ) {
     bootstrapThree.call(this)
 
     this.kitchen = modelBall.kitchen
+    this.tokenPool = modelBall.tokenPool
 
     this.machineRenderer = Object.create( machineRenderer ).init(  )
     this.gridRenderer = Object.create( gridRenderer ).init(  )
+    this.tokenRenderer = Object.create( tokenRenderer ).init(  )
 
     this.scene.add( this.machineRenderer.layer )
+    this.scene.add( this.tokenRenderer.layer )
     this.scene.add( this.gridRenderer.layer )
 
 
@@ -64,6 +68,8 @@ var init = function( modelBall ) {
 
 var render = function( kitchen ){
     this.machineRenderer.render( this.kitchen.blocks )
+    this.tokenRenderer.render( this.tokenPool )
+
     this.renderer.render( this.scene, this.camera );
 }
 

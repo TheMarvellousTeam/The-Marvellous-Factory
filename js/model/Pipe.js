@@ -15,18 +15,13 @@ var tokenAcceptable = function( token ){
     return true
 }
 var consumeToken = function( token ){
-    /*this.waitBuffer.push({
-        token : token,
-        age : 0
-    })*/
+
+    token.entrerInPipe( this )
+
     this.waitBuffer.push(token)
 }
 var process = function( token ){
 
-    // a step passed
-    this.outTokens.concat(this.waitBuffer).forEach(function(o){
-        o.age++
-    })
 }
 
 module.exports = Object.create( Abstract )

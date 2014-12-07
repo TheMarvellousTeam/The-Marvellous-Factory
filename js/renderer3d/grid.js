@@ -67,8 +67,6 @@ geometry.uvsNeedUpdate= true
     plane.position.x = width/2
     plane.position.z = height/2
 
-    plane.name = 'ground'
-
     return plane
 }
 

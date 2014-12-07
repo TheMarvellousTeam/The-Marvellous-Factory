@@ -33,6 +33,5 @@ module.exports = Object.create( Abstract )
 .extend({
     getInputs : function(){ return getSymbols.call(this,2)},
     getOutputs : function(){ return getSymbols.call(this,3)},
-    getType: function(){ return this.type||"" },
     clone: clone
 })

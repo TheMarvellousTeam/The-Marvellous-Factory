@@ -26,6 +26,7 @@
     "less" :"*",
     "gulp" : "*",
     "gulp-watch" : "*",
+    "gulp-connect" : "*",
     "gulp-autoprefixer" : "*",
     "gulp-rename" : "*",
     "gulp-browserify" : "*"
