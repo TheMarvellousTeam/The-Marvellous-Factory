@@ -1,5 +1,5 @@
 var Abstract = require('../utils/Abstract')
-  , Pipe = require('../model/Pipe')
+  , PipeFactory = require('../model/PipeFactory')
 
 var init = function(){
     return this
@@ -31,7 +31,7 @@ var buildFormBlocks = function( blocks ){
     //build the graph
     for(var i=blocks.length; i--;){
 
-        var A = Object.create( Pipe ).init( blocks[i] )
+        var A = PipeFactory.create( blocks[i] )
 
         blocks[i].pipe = A
 
