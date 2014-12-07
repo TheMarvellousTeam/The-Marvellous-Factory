@@ -1,6 +1,6 @@
 var factory = require('../sampleFactory')
    , flow = require('../../js/system/flow')
-   , token = require('../../js/model/token')
+   , token = require('../../js/model/Token')
 
 var sanity = function( graph ){
     //TODO

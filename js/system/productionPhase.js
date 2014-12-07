@@ -1,6 +1,6 @@
 var ed = require('./eventDispatcher')
   , flow = require('./flow')
-  , token = require('../model/token')
+  , token = require('../model/Token')
 
 
 var update = function(){
