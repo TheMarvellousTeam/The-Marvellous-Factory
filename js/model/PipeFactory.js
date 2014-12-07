@@ -1,7 +1,7 @@
 var Abstract = require('../utils/Abstract')
   , machineSpec = require('../data/machine')
   , pipe = require('./Pipe')
-  , Token = require('../model/Token')
+  , Token = require('./Token')
 
 
 var create = function( block ){
