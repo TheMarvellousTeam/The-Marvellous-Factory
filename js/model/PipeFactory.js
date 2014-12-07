@@ -40,6 +40,17 @@ var dummy = Object.create(pipe).extend({
 })
 
 var generic = Object.create(pipe).extend({
+    tokenAcceptable : function(token){
+        // always accept
+        return this.waitBuffer.length + this.outTokens.length < this.maxStorage
+    },
+    process : function(){
+
+        for( var i = this.waitBuffer.length; i--;)
+            if( this.waitBuffer[i].age - this.waitBuffer[i].ageInPipe > 110 )
+                this.outTokens.push( this.waitBuffer.splice(i,1)[0] )
+
+    },
 })
 
 var emiter = Object.create(pipe).extend({
@@ -50,8 +61,8 @@ var emiter = Object.create(pipe).extend({
 
         this.d = (this.d || 0) + 1
 
-        if ( this.d == 100 ){
-            this.d = 1110
+        if ( this.d == 200 ){
+            this.d = 0
 
             var token = Object.create( Token ).init()
 

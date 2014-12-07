@@ -310,6 +310,27 @@ module.exports = [
             ]
         },*/
     ]
-}
+},
+{
+    label: 'conveyor',
+    width: 16,
+    height: 16,
+    blocks: [
+        {
+            origin: {x:5,y:5},
+            type: 'emiter',
+            shape: [
+                [0,3]
+            ]
+        },
+        {
+            origin: {x:6,y:5},
+            type: 'conveyor',
+            shape: [
+                [2,3]
+            ]
+        },
+    ]
+},
 
 ]

@@ -38,7 +38,7 @@ var getPosition = function(){
 
     var d = 100
 
-    var k = Math.min( ( this.ageInPipe - this.age ) / d , 1 )
+    var k = Math.min( ( this.age - this.ageInPipe ) / d , 1 )
 
     if( i && o )
         return {
