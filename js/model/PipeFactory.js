@@ -50,8 +50,8 @@ var emiter = Object.create(pipe).extend({
 
         this.d = (this.d || 0) + 1
 
-        if ( this.d > 200 ){
-            this.d = 0
+        if ( this.d == 100 ){
+            this.d = 1110
 
             var token = Object.create( Token ).init()
 
