@@ -3,29 +3,37 @@ module.exports = [
     label: 'one block',
     width: 16,
     height: 16,
-    blocks: [
-        {
-            origin: {x:5,y:5},
-            shape: [
-                [0,0,2,0],
-                [1,1,1,1],
-                [0,1,1,0],
-                [0,0,3,0]
-            ]
-        }
-    ],
+    blocks: [],
     store: [
         {
-            origin: {x:25, y:25},
+            origin: {x:25, y:15},
+            type: "Bidule1",
+            price: 1,
+            shape: [
+                [3,2]
+            ]
+        },
+        {
+            origin: {x:25, y:50},
+            type: "Bidule2",
+            price: 1,
+            shape: [
+                [3],[2]
+            ]
+        },
+        {
+            origin: {x:25, y:90},
             type: "Truc1",
+            price: 10,
             shape: [
                 [3,1,2],
                 [1,1,1]
             ]
         },
         {
-            origin: {x: 25, y: 75},
+            origin: {x: 25, y: 150},
             type: "Truc2",
+            price: 25,
             shape: [
                 [1,2,2,1],
                 [3,1,1,3],

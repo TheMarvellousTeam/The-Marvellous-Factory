@@ -11,6 +11,7 @@ var init = function( info ){
 
 var initBlockSprite = function( block , ts ){
     var container = new PIXI.DisplayObjectContainer;
+    container.interactive = true;
 
     var color = 0|(Math.random()*(255*255*255))
 
@@ -88,6 +89,7 @@ var render = function( blocks ){
         var sprite;
         if (!(sprite = block._sprite)){
             sprite = initBlockSprite( block , ts )
+            block._sprite = sprite ;
             layer.addChild(sprite)
         }
 

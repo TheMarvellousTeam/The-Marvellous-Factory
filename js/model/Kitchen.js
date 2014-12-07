@@ -8,8 +8,11 @@ var init = function(width, height){
 
     this.blocks = []
     this.availablesCells = []
-    for(var i=height;i--;)
+    this.blockRef = []
+    for(var i=height;i--;) {
         this.availablesCells.push(new Array(width))
+        this.blockRef.push(new Array(width))
+    }
     return this
 }
 
@@ -27,8 +30,10 @@ var check = function(shape,origin) {
 var addBlock = function(block) {
     for(var y=block.shape.length; y--; )
     for(var x=block.shape[y].length; x--; )
-        if( block.shape[y][x] == 1 || block.shape[y][x] == 3 )
+        if( block.shape[y][x] == 1 || block.shape[y][x] == 3 ){
             this.availablesCells[y+block.origin.y][x+block.origin.x] = 1;
+            this.blockRef[y+block.origin.y][x+block.origin.x] = block;
+        }
     this.blocks.push(block)
     return this
 }
@@ -36,10 +41,19 @@ var addBlock = function(block) {
 var removeBlock = function(block) {
     for(var y=block.shape.length; y--; )
     for(var x=block.shape[y].length; x--; )
-        if( block.shape[y][x] == 1 || block.shape[y][x] == 3 )
-            this.availablesCells[y+origin.y][x+origin.x] = 1;
+        if( block.shape[y][x] == 1 || block.shape[y][x] == 3 ){
+            this.availablesCells[y+block.origin.y][x+block.origin.x] = 0;
+            this.blockRef[y+block.origin.y][x+block.origin.x] = null;
+        }
+    if( block._sprite ){
+        block._sprite.removeChildren()
+    }
     this.blocks.splice( this.blocks.indexOf(block), 1 )
     return this
+}
+
+var getBlock = function(x, y) {
+    return this.blockRef[y][x] ;
 }
 
 module.exports = Object.create( Abstract )
@@ -51,5 +65,6 @@ module.exports = Object.create( Abstract )
     check : check,
     init : init,
     addBlock : addBlock,
-    removeBlock : removeBlock
+    removeBlock : removeBlock,
+    getBlock : getBlock
 })

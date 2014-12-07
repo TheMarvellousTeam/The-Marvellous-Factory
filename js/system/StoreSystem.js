@@ -7,11 +7,13 @@ var init = function(store, kitchen) {
 	this.store = store ;
 
 	this.selected = null ;
+}
 
+var update = function() {
 	var self = this ;
 
 	this.store.blocks.forEach( function(block){
-		if( block._sprite ){
+		if( block._sprite && !block._callbackStore ){
 			block._sprite.mouseup = function(event) {
 				self.selected = null ;
 			}
@@ -31,12 +33,14 @@ var init = function(store, kitchen) {
 				}
 				self.selected = null;
 			}
+
+			block._callbackStore = true;
 		}
 	})
-
 }
 
 module.exports = Object.create( Abstract )
 .extend({
-    init : init
+    init : init,
+    update :update
 })
