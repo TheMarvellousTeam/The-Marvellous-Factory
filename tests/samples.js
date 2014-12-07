@@ -10,7 +10,7 @@ module.exports = [
             type: "Bidule1",
             price: 1,
             shape: [
-                [3,2]
+                [2,3]
             ]
         },
         {
@@ -18,7 +18,8 @@ module.exports = [
             type: "Bidule2",
             price: 1,
             shape: [
-                [3],[2]
+                [2],
+                [3]
             ]
         },
         {
@@ -26,8 +27,8 @@ module.exports = [
             type: "Truc1",
             price: 10,
             shape: [
-                [3,1,2],
-                [1,1,1]
+                [1,1,2],
+                [3,1,1]
             ]
         },
         {
@@ -36,9 +37,9 @@ module.exports = [
             price: 25,
             shape: [
                 [1,2,2,1],
+                [1,1,1,1],
                 [3,1,1,3],
-                [3,1,1,3],
-                [1,1,1,1]
+                [1,3,3,1]
             ]
         }
     ]

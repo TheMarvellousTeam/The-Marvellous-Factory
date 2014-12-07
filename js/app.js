@@ -7,7 +7,7 @@ var factory = require('../tests/sampleFactory')
 
 
 
-if ( !true )
+if ( true )
 {
 
 
