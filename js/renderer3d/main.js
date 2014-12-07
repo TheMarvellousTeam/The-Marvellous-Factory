@@ -41,7 +41,8 @@ var bootstrapThree = function(){
 	var renderer = this.renderer = new THREE.WebGLRenderer( );
 	renderer.setSize( window.innerWidth, window.innerHeight );
 
-	document.body.appendChild( renderer.domElement );
+	//document.body.appendChild( renderer.domElement );
+    document.getElementById("gamescreen").appendChild(renderer.domElement);
 
 }
 

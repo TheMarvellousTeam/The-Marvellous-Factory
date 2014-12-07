@@ -1,5 +1,6 @@
 var testFactory = require('../tests/sampleFactory')
   , mainRenderer = require('./renderer3d/main')
+  , menuRenderer = require('./rendererUI/Menu')
 
   , kitchen = Object.create( require('./model/Kitchen') )
   , gameState = Object.create( require('./model/GameState') )
@@ -26,6 +27,7 @@ productionPhase.init( modelBall )
 
 // init renderer
 var renderer = Object.create( mainRenderer ).init( modelBall )
+var menu = Object.create( menuRenderer ).init()
 
 // test
 testFactory.copyKitchen( kitchen , 14 )
@@ -39,6 +41,7 @@ window.requestAnimationFrame(function cycle(){
 
     eventDispatcher.dispatch('pre-render')
     renderer.render()
+    menu.render()
     eventDispatcher.dispatch('post-render')
 
     window.requestAnimationFrame(cycle)
