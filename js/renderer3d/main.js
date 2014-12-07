@@ -6,14 +6,14 @@ var machineRenderer = require('./machine')
 var bootstrapThree = function(){
 
 	var camera = this.camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 1000 );
-	camera.position.z = 50;
-	camera.position.y = 10;
+	camera.position.z = 7;
+	camera.position.y = 20;
 
 	var controls = new THREE.OrbitControls( camera );
 	controls.center.x = 8
 	controls.center.z = 8
 	controls.addEventListener( 'change', function render() {
-        renderer.render( scene, camera );
+        //renderer.render( scene, camera );
     });
 
 	var scene = this.scene = new THREE.Scene();
