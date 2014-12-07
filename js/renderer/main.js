@@ -36,6 +36,7 @@ var render = function( kitchen, store ){
 
     this.gridRenderer.render( kitchen )
     this.machineRenderer.render( kitchen.blocks )
+    
     this.menuRenderer.render( store )
 
     this.renderer.render( this.stage )

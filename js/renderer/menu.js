@@ -17,12 +17,14 @@ var render = function( store ) {
 		var sprite;
         if (!(sprite = block._sprite)){
             sprite = initBlockSprite( block , 12 )
+            block._sprite = sprite ;
             layer.addChild(sprite)
         }
 
         var text;
         if(!(text = block._text)){
             text = initText(block)
+            block._text = text ;
             layer.addChild(text)
         }
 
@@ -54,12 +56,13 @@ var initBorder = function(info) {
 
 var initBlockSprite = function( block , ts ){
     var container = new PIXI.DisplayObjectContainer;
+    container.interactive = true;
 
     for(var y=block.shape.length; y--; )
     for(var x=block.shape[y].length; x--; )
         if( block.shape[y][x] )
         {
-            var square = initSquareSprite( ts , block.shape[y][x] == 1 ? 0x126712 : 0x451200 )
+            var square = initSquareSprite( ts , block.shape[y][x] == 1 ? 0x126712 : block.shape[y][x] == 2 ? 0x363212 : 0x451200 )
             square.position.x = x*ts
             square.position.y = y*ts
 

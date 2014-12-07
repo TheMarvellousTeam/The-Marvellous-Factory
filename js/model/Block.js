@@ -18,9 +18,21 @@ var getSymbols = function( symbol ){
     return points
 }
 
+var clone = function(block) {
+	this.shape=[]
+	for(var y=block.shape.length; y--; ){
+		this.shape[y] = [];
+    	for(var x=block.shape[y].length; x--; ){
+    		this.shape[y][x]=block.shape[y][x];
+    	}
+	}
+	return this;
+}
+
 module.exports = Object.create( Abstract )
 .extend({
     getInputs : function(){ return getSymbols.call(this,2)},
     getOutputs : function(){ return getSymbols.call(this,3)},
-    getType: function(){ return this.type||"" }
+    getType: function(){ return this.type||"" },
+    clone: clone
 })

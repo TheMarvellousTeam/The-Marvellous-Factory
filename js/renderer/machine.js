@@ -16,7 +16,7 @@ var initBlockSprite = function( block , ts ){
     for(var x=block.shape[y].length; x--; )
         if( block.shape[y][x] )
         {
-            var square = initSquareSprite( ts , block.shape[y][x] == 1 ? 0x126712 : 0x451200 )
+            var square = initSquareSprite( ts , block.shape[y][x] == 1 ? 0x126712 : block.shape[y][x] == 2 ? 0x363212 : 0x451200 )
             square.position.x = x*ts
             square.position.y = y*ts
 
