@@ -7,6 +7,9 @@ var factory = require('../tests/sampleFactory')
 
 
 
+if ( !true )
+{
+
 
 factory.copyKitchen( kitchen )
 factory.copyStore( store )
@@ -28,3 +31,15 @@ var gameLoop = function() {
 }
 
 window.requestAnimationFrame(gameLoop)
+
+
+}else{
+
+
+factory.copyKitchen( kitchen , 4 )
+
+var main = Object.create( require('./renderer3d/main') ).init()
+
+main.render(kitchen)
+
+}

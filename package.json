@@ -16,7 +16,8 @@
   },
 
   "dependencies": {
-    "pixi.js" : "*"
+    "pixi.js" : "*",
+    "three" : "*"
   },
 
   "devDependencies" : {
