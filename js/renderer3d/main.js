@@ -1,6 +1,6 @@
 var machineRenderer = require('./machine')
   , gridRenderer = require('./grid')
-  , tokenRenderer = require('./Token')
+  , tokenRenderer = require('./token')
   , userInput = require('./userInput')
   , ed = require('../system/eventDispatcher')
 
