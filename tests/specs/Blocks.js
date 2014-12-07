@@ -1,5 +1,5 @@
 var factory = require('../sampleFactory')
-
+/*
 describe('blocks ', function(){
 
     beforeEach(function(){
@@ -33,3 +33,4 @@ describe('blocks ', function(){
     })
 
 })
+*/
