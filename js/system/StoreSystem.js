@@ -18,18 +18,18 @@ var init = function(store, kitchen) {
 
 			block._sprite.mousedown = function(event) {
 				self.selected = block ;
-				console.log('clic on '+block.type);
 			}
 
 			block._sprite.mouseupoutside = function(event) {
 
-				var newBlock = Object.create(Block).clone(self.selected);
+				var position = { x: Math.floor(event.global.x / 48), y: Math.floor(event.global.y / 48 )};
 
-				console.log(self.selected.type+' released');
+				if( self.kitchen.check(self.selected.shape, position) ){
+					var newBlock = Object.create(Block).clone(self.selected);
+					newBlock.origin = position;
+					self.kitchen.addBlock(newBlock);
+				}
 				self.selected = null;
-
-				newBlock.origin = { x: Math.floor(event.global.x / 48), y: Math.floor(event.global.y / 48 )};
-				self.kitchen.addBlock(newBlock);
 			}
 		}
 	})
