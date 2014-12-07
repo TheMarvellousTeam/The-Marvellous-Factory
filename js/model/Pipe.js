@@ -1,6 +1,6 @@
 var Abstract = require('../utils/Abstract')
 
-var init = function( block ){
+var init = function( ){
     this.in = []
     this.out = []
 
@@ -10,16 +10,20 @@ var init = function( block ){
     return this
 }
 
+
 var tokenAcceptable = function( token ){
     return true
 }
 var consumeToken = function( token ){
-    this.waitBuffer.push({
+    /*this.waitBuffer.push({
         token : token,
         age : 0
-    })
+    })*/
+    this.waitBuffer.push(token)
 }
-var processToken = function( token ){
+var process = function( token ){
+
+    // a step passed
     this.outTokens.concat(this.waitBuffer).forEach(function(o){
         o.age++
     })
@@ -29,5 +33,6 @@ module.exports = Object.create( Abstract )
 .extend({
     init: init,
     tokenAcceptable : tokenAcceptable,
-    processToken : processToken
+    process : process,
+    consumeToken: consumeToken
 })
