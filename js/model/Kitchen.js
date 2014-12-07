@@ -7,6 +7,8 @@ var init = function(width, height){
     this.height = height;
 
     this.blocks = []
+    this.tokens = []
+
     this.availablesCells = []
     this.blockRef = []
     for(var i=height;i--;) {

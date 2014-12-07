@@ -1,45 +1,44 @@
 var factory = require('../tests/sampleFactory')
   , mainRenderer = require('./renderer/main')
+
   , kitchen = Object.create( require('./model/Kitchen') )
+  , gameState = Object.create( require('./model/GameState') )
   , store = Object.create( require('./model/Store') )
+
   , storeSystem = Object.create( require('./system/StoreSystem'))
   , deleteSystem = Object.create( require('./system/DeleteSystem'))
+  , eventDispatcher = require('./system/eventDispatcher')
+  , productionPhase = require('./system/productionPhase')
 
+// init model
+kitchen.init()
+gameState.init()
+store.init()
 
-
-if ( true )
-{
-
-
-factory.copyKitchen( kitchen )
-factory.copyStore( store )
-
-var main = Object.create( mainRenderer ).init()
-
-storeSystem.init(store, kitchen)
-deleteSystem.init(kitchen)
-
-
-var gameLoop = function() {
-	main.render(kitchen, store)
-	main.stage.interactionManager.update()
-
-	storeSystem.update()
-	deleteSystem.update()
-
-	window.requestAnimationFrame(gameLoop)
+// init system
+var modelBall = {
+    kitchen: kitchen,
+    store: store,
+    gameState: gameState
 }
 
-window.requestAnimationFrame(gameLoop)
+productionPhase.init( modelBall )
+
+// init renderer
+var renderer = Object.create( mainRenderer ).init( modelBall )
 
 
-}else{
+// start render loop
 
+window.requestAnimationFrame(function cycle(){
+    eventDispatcher.dispatch('pre-update')
+    eventDispatcher.dispatch('update')
+    eventDispatcher.dispatch('post-update')
 
-factory.copyKitchen( kitchen , 4 )
+    eventDispatcher.dispatch('pre-render')
+    renderer.render()
+    eventDispatcher.dispatch('post-render')
+})
 
-var main = Object.create( require('./renderer3d/main') ).init()
-
-main.render(kitchen)
-
-}
+// manage phases
+eventDispatcher.dispatch('start-production')

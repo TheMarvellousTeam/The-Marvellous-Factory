@@ -211,5 +211,105 @@ module.exports = [
             ]
         },
     ]
+},
+
+{
+    label: 'conveyor',
+    width: 16,
+    height: 16,
+    blocks: [
+        {
+            origin: {x:5,y:5},
+            type: 'conveyor',
+            shape: [
+                [2,3]
+            ]
+        },
+        {
+            origin: {x:6,y:5},
+            type: 'conveyor',
+            shape: [
+                [2,3]
+            ]
+        },
+        {
+            origin: {x:7,y:5},
+            type: 'conveyor',
+            shape: [
+                [2,3]
+            ]
+        },
+        {
+            origin: {x:8,y:5},
+            type: 'conveyor',
+            shape: [
+                [2,3]
+            ]
+        },
+        {
+            origin: {x:9,y:5},
+            type: 'conveyor',
+            shape: [
+                [2],
+                [3]
+            ]
+        },
+        {
+            origin: {x:9,y:6},
+            type: 'conveyor',
+            shape: [
+                [2],
+                [3]
+            ]
+        },
+        {
+            origin: {x:9,y:7},
+            type: 'conveyor',
+            shape: [
+                [2],
+                [3]
+            ]
+        },
+        {
+            origin: {x:8,y:8},
+            type: 'conveyor',
+            shape: [
+                [3,2]
+            ]
+        },
+        {
+            origin: {x:5,y:8},
+            type: 'conveyor',
+            shape: [
+                [3,1,1,2]
+            ]
+        },
+        {
+            origin: {x:5,y:7},
+            type: 'conveyor',
+            shape: [
+                [3],
+                [2],
+            ]
+        },
+        {
+            origin: {x:5,y:6},
+            type: 'conveyor',
+            shape: [
+                [3],
+                [2],
+            ]
+        },
+        /*
+        {
+            origin: {x:5,y:5},
+            type: 'conveyor',
+            shape: [
+                [3],
+                [2],
+            ]
+        },*/
+    ]
 }
+
 ]

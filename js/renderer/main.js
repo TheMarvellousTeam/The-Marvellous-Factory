@@ -11,7 +11,7 @@ var bootstrapPixi = function(){
     return renderer
 }
 
-var init = function() {
+var init = function( modelBall ) {
 
     this.renderer = bootstrapPixi();
 
@@ -20,6 +20,9 @@ var init = function() {
     var info = {
         tileSize: 48
     }
+
+    this.kitchen = modelBall.kitchen
+    this.store = modelBall.store
 
     this.machineRenderer = Object.create( machineRenderer ).init(info)
     this.gridRenderer = Object.create( gridRenderer ).init(info)
@@ -32,12 +35,11 @@ var init = function() {
     return this
 }
 
-var render = function( kitchen, store ){
+var render = function( ){
 
-    this.gridRenderer.render( kitchen )
-    this.machineRenderer.render( kitchen.blocks )
-    
-    this.menuRenderer.render( store )
+    this.machineRenderer.render( this.kitchen.blocks )
+
+    this.menuRenderer.render( this.store )
 
     this.renderer.render( this.stage )
 }

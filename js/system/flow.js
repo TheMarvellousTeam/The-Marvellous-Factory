@@ -1,10 +1,12 @@
-var Abstract = require('../utils/Abstract')
-  , PipeFactory = require('../model/PipeFactory')
+var PipeFactory = require('../model/PipeFactory')
 
-var init = function(){
-    return this
+
+// merge array B in array A without duplication ( side effect on A )
+var merge = function( A , B ){
+    return A.concat( B.filter(function( node ){
+        return A.indexOf( node ) < 0
+    }))
 }
-
 
 // ancestor in in|out
 var getRoots = function( node , ancestor ){
@@ -17,12 +19,7 @@ var getRoots = function( node , ancestor ){
         return [node]
 }
 
-// merge array B in array A without duplication ( side effect on A )
-var merge = function( A , B ){
-    return A.concat( B.filter(function( node ){
-        return A.indexOf( node ) < 0
-    }))
-}
+
 
 var buildFormBlocks = function( blocks ){
 
@@ -126,9 +123,7 @@ var iterateFlow = (function(){
 
 
 
-module.exports = Object.create( Abstract )
-.extend({
-    init: init,
+module.exports = {
     buildFormBlocks : buildFormBlocks,
     iterateFlow: iterateFlow
-})
+}
