@@ -14,6 +14,7 @@ var dispatch = function( eventName, data ){
             case 'pre-update':
             case 'post-render':
             case 'pre-render':
+            case 'render3D-camera-change':
                 break;
             default:
                 console.log(eventName)
@@ -35,10 +36,14 @@ var unlisten = function( eventName, key ){
             l.splice(i,1)
     return this
 }
+var hasListener = function( eventName, key ){
+    return ( listener[ eventName ] || [] ).length
+}
 
 module.exports = Object.create( Abstract )
 .extend({
     dispatch: dispatch,
     listen: listen,
-    unlisten: unlisten
+    unlisten: unlisten,
+    hasListener: hasListener
 })

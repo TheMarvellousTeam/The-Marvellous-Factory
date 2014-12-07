@@ -1,5 +1,7 @@
 var machineRenderer = require('./machine')
   , gridRenderer = require('./grid')
+  , userInput = require('./userInput')
+  , ed = require('../system/eventDispatcher')
 
 
 
@@ -13,7 +15,7 @@ var bootstrapThree = function(){
 	controls.center.x = 8
 	controls.center.z = 8
 	controls.addEventListener( 'change', function render() {
-        //renderer.render( scene, camera );
+        ed.dispatch('render3D-camera-change')
     });
 
 	var scene = this.scene = new THREE.Scene();
@@ -42,12 +44,14 @@ var bootstrapThree = function(){
 
 }
 
-var init = function(info) {
+var init = function( modelBall ) {
 
     bootstrapThree.call(this)
 
-    this.machineRenderer = Object.create( machineRenderer ).init(info)
-    this.gridRenderer = Object.create( gridRenderer ).init(info)
+    this.kitchen = modelBall.kitchen
+
+    this.machineRenderer = Object.create( machineRenderer ).init(  )
+    this.gridRenderer = Object.create( gridRenderer ).init(  )
 
     this.scene.add( this.machineRenderer.layer )
     this.scene.add( this.gridRenderer.layer )
@@ -56,7 +60,7 @@ var init = function(info) {
 }
 
 var render = function( kitchen ){
-    this.machineRenderer.render( kitchen.blocks )
+    this.machineRenderer.render( this.kitchen.blocks )
     this.renderer.render( this.scene, this.camera );
 }
 

@@ -1,5 +1,5 @@
-var factory = require('../tests/sampleFactory')
-  , mainRenderer = require('./renderer/main')
+var testFactory = require('../tests/sampleFactory')
+  , mainRenderer = require('./renderer3d/main')
 
   , kitchen = Object.create( require('./model/Kitchen') )
   , gameState = Object.create( require('./model/GameState') )
@@ -28,6 +28,8 @@ productionPhase.init( modelBall )
 // init renderer
 var renderer = Object.create( mainRenderer ).init( modelBall )
 
+// test
+testFactory.copyKitchen( kitchen , 11 )
 
 // start render loop
 
@@ -39,6 +41,8 @@ window.requestAnimationFrame(function cycle(){
     eventDispatcher.dispatch('pre-render')
     renderer.render()
     eventDispatcher.dispatch('post-render')
+
+    window.requestAnimationFrame(cycle)
 })
 
 // manage phases
