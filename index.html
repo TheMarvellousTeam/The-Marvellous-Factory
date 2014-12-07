@@ -2,13 +2,20 @@
 
     <body style="margin:0">
     	<div id="gamescreen"></div>
-    	<div class="menu">Menu</div>
+    	<div class="menu">
+            <div class="btn-group-vertical btn-group-lg" role="group" aria-label="menu">   
+                <button id="menu-button1" type="button" class="btn btn-default">Button1</button>
+                <button id="menu-button2" type="button" class="btn btn-default">Button2</button>
+        </div>
     </body>
 
 
     <head>
 
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 
         <script src="node_modules\three\three.js"></script>
         <script src="OrbitControls.js"></script>
