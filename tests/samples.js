@@ -402,4 +402,81 @@ module.exports = [
     ]
 },
 
+{
+    label: 'machine1',
+    width: 16,
+    height: 16,
+    blocks: [
+        {
+            origin: {x:4,y:5},
+            type: 'conveyor',
+            shape: [
+                [2,1,3]
+            ]
+        },
+        {
+            origin: {x:4,y:7},
+            type: 'conveyor',
+            shape: [
+                [2,1,3]
+            ]
+        },
+        {
+            origin: {x:3,y:5},
+            type: 'emiter',
+            tokenType: 'B',
+            shape: [
+                [0,3]
+            ]
+        },
+        {
+            origin: {x:3,y:7},
+            type: 'emiter',
+            tokenType: 'A',
+            shape: [
+                [0,3]
+            ]
+        },
+        {
+            origin: {x:6,y:5},
+            type: 'machine1',
+            shape: [
+                [2,1],
+                [0,3],
+                [2,1],
+            ]
+        },
+        {
+            origin: {x:7,y:6},
+            type: 'conveyor',
+            shape: [
+                [2,3]
+            ]
+        },
+        {
+            origin: {x:8,y:6},
+            type: 'conveyor',
+            shape: [
+                [2,1,1,1,3]
+            ]
+        },
+        {
+            origin: {x:12,y:6},
+            type: 'conveyor',
+            shape: [
+                [2,3]
+            ]
+        },
+        {
+            origin: {x:13,y:5},
+            type: 'receiver',
+            shape: [
+                [0,1],
+                [2,1],
+                [0,1]
+            ]
+        }
+    ]
+}
+
 ]

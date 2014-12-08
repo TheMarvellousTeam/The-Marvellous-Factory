@@ -362,7 +362,9 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 			rotateStart.set( event.clientX, event.clientY );
 
-		} else if ( event.button === scope.mouseButtons.ZOOM ) {
+		}
+		/*
+		else if ( event.button === scope.mouseButtons.ZOOM ) {
 			if ( scope.noZoom === true ) return;
 
 			state = STATE.DOLLY;
@@ -376,7 +378,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 			panStart.set( event.clientX, event.clientY );
 
-		}
+		}*/
 
 		document.addEventListener( 'mousemove', onMouseMove, false );
 		document.addEventListener( 'mouseup', onMouseUp, false );
@@ -655,14 +657,14 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 	this.domElement.addEventListener( 'contextmenu', function ( event ) { event.preventDefault(); }, false );
 	this.domElement.addEventListener( 'mousedown', onMouseDown, false );
-	this.domElement.addEventListener( 'mousewheel', onMouseWheel, false );
+	//this.domElement.addEventListener( 'mousewheel', onMouseWheel, false );
 	this.domElement.addEventListener( 'DOMMouseScroll', onMouseWheel, false ); // firefox
 
 	this.domElement.addEventListener( 'touchstart', touchstart, false );
 	this.domElement.addEventListener( 'touchend', touchend, false );
 	this.domElement.addEventListener( 'touchmove', touchmove, false );
 
-	window.addEventListener( 'keydown', onKeyDown, false );
+	//window.addEventListener( 'keydown', onKeyDown, false );
 
 	// force an update at start
 	this.update();

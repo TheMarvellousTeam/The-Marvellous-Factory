@@ -36,7 +36,7 @@ var ui = Object.create( UI ).init()
 shopClickAndPose.init( modelBall )
 
 // test
-testFactory.copyKitchen( kitchen , 8 )
+testFactory.copyKitchen( kitchen , 9 )
 
 // start render loop
 

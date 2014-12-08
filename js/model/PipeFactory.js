@@ -2,6 +2,7 @@ var Abstract = require('../utils/Abstract')
   , machineSpec = require('../data/machine')
   , pipe = require('./Pipe')
   , Token = require('./Token')
+  , ed = require('../system/eventDispatcher')
 
 
 var create = function( block ){
@@ -18,6 +19,10 @@ var create = function( block ){
 
         case 'conveyor' :
             base = conveyor
+            break
+
+        case 'receiver':
+            base = receiver
             break
 
         default :
@@ -156,6 +161,20 @@ var conveyor = Object.create(pipe).extend({
             if( this.waitBuffer[i].age - this.waitBuffer[i].ageInPipe > 110 )
                 this.outTokens.push( this.waitBuffer.splice(i,1)[0] )
 
+    },
+})
+
+var receiver = Object.create(pipe).extend({
+    tokenAcceptable: function(token){
+        return true;
+    },
+    process: function(){
+        for( var i = this.waitBuffer.length; i--; ){
+            ed.dispatch('receive-token', {
+                token: this.waitBuffer[i]
+            });
+            this.waitBuffer[i].remove();
+        }
     },
 })
 

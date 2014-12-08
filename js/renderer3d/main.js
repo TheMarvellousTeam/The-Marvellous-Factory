@@ -9,8 +9,8 @@ var machineRenderer = require('./machine')
 var bootstrapThree = function(){
 
 	var camera = this.camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 1000 );
-	camera.position.z = 7;
-	camera.position.y = 20;
+	camera.position.z = 14;
+	camera.position.y = 10;
 
 
 
@@ -42,6 +42,7 @@ var bootstrapThree = function(){
     controls.center.x = 8
     controls.center.y = 1
     controls.center.z = 8
+    controls.update()
     controls.addEventListener( 'change', function render() {
         ed.dispatch('render3D-camera-change')
     });
