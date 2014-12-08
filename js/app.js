@@ -18,6 +18,9 @@ kitchen.init()
 gameState.init()
 controlState.init()
 
+// test
+testFactory.copyKitchen( kitchen , 9 )
+
 // init system
 var modelBall = {
     kitchen: kitchen,
@@ -35,8 +38,7 @@ var ui = Object.create( UI ).init()
 shopClickAndPose.init( modelBall )
 traceConveyor.init( modelBall )
 
-// test
-testFactory.copyKitchen( kitchen , 9 )
+
 
 // start render loop
 

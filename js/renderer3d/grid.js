@@ -1,17 +1,16 @@
 
-var init = function( info ){
+var init = function( modelBall ){
     this.layer = new THREE.Object3D()
 
-    this.layer.add( buildFloor() )
+    this.kitchen = modelBall.kitchen
+
+    this.layer.add( buildFloor( modelBall.kitchen.width, modelBall.kitchen.height ) )
 
     return this
 }
 
-var buildFloor = function( ){
+var buildFloor = function( width , height ){
     var container = new THREE.Object3D()
-
-    var width = 16
-    var height = 16
 
     var geometry = new THREE.PlaneGeometry( width , height );
 
