@@ -19,15 +19,20 @@ var bootstrapThree = function(){
 
 	// lights
 
-	var light = new THREE.PointLight( 0xffffff , 1 , 0);
-	light.position.set( 100, 100, 100 );
-	scene.add( light );
+	var light = new THREE.PointLight( 0xffffff , 0.1 , 0);
+	light.position.set( 8, 100, 8 );
+	//scene.add( light );
 
-	var light = new THREE.DirectionalLight( 0x002288 );
-	light.position.set( -100, 10, -100 );
-	scene.add( light );
+	var light = new THREE.DirectionalLight( 0x333333 );
+	light.position.set( 8, 10, 8 );
+    //scene.add( light );
 
-	var light = new THREE.AmbientLight( 0x111111 );
+    var hemiLight = new THREE.HemisphereLight( 0x333333, 0x333333, 0.6 );
+    hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
+    hemiLight.position.set( 0, 1000, 0 );
+    scene.add( hemiLight );
+
+	var light = new THREE.AmbientLight( 0x555555 );
 	scene.add( light );
 
 

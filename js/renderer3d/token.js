@@ -20,10 +20,10 @@ var initSpriteMaterial = function(){
     this.spriteMaterials[ 'B' ] = new THREE.SpriteMaterial( { map: texture, fog: true } );
 
     var texture = THREE.ImageUtils.loadTexture( "./assets/crab-colour-reduce.svg" );
-    this.spriteMaterials[ 'A' ] = new THREE.SpriteMaterial( { map: texture, fog: true } );
+    this.spriteMaterials[ 'C' ] = new THREE.SpriteMaterial( { map: texture, fog: true } );
 
     var texture = THREE.ImageUtils.loadTexture( "../DessinsTM/4848/poisson3.gif" );
-    this.spriteMaterials[ 'C' ] = new THREE.SpriteMaterial( { map:texture, fog: true } );
+    this.spriteMaterials[ 'A' ] = new THREE.SpriteMaterial( { map:texture, fog: true } );
 
     var texture = THREE.ImageUtils.loadTexture( "../DessinsTM/4848/poisson4.gif" );
     this.spriteMaterials[ 'D' ] = new THREE.SpriteMaterial( { map:texture, fog: true } );

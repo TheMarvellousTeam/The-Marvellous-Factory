@@ -72,8 +72,8 @@ var buildMachineOpening = function( ){
     var right = new THREE.BoxGeometry( 0.2, 0.3, 1 );
     right.applyMatrix( (new THREE.Matrix4()).setPosition(new THREE.Vector3(0.4,0.55,0) ) )
 
-    var bottom = new THREE.BoxGeometry( 1, 0.4, 1 );
-    bottom.applyMatrix( (new THREE.Matrix4()).setPosition(new THREE.Vector3(0,0.2,0) ) )
+    //var bottom = new THREE.BoxGeometry( 1, 0.4, 1 );
+    //bottom.applyMatrix( (new THREE.Matrix4()).setPosition(new THREE.Vector3(0,0.2,0) ) )
 
     var arrow = buildArrow();
     arrow.applyMatrix( (new THREE.Matrix4()).setPosition(new THREE.Vector3(0,0.85,0) ) )
@@ -198,7 +198,18 @@ var render = function( ){
     this.kitchen.blocks.forEach(function(block){
         var visual;
         if (!(visual = block._visual)){
-            block._visual = visual = block.type == 'conveyor' ? buildConv( block ) : (block.type == 'emiter' ? buildEmiter( block ) : buildMachine( block ));
+            var build ;
+            switch(block.type) {
+                case 'conveyor':
+                    build = buildConv(block);
+                    break;
+                case 'emiter':
+                    build = buildEmiter(block);
+                    break;
+                default:
+                    build = buildMachine( block );
+            }
+            block._visual = visual = build;
             layer.add(visual)
         }
 

@@ -10,8 +10,6 @@ var testFactory = require('../tests/sampleFactory')
   , shopClickAndPose = Object.create( require('./controller/shopClickAndPose') )
   , traceConveyor = Object.create( require('./controller/traceConveyor') )
 
-  , storeSystem = Object.create( require('./system/StoreSystem'))
-  , deleteSystem = Object.create( require('./system/DeleteSystem'))
   , eventDispatcher = require('./system/eventDispatcher')
   , productionPhase = require('./system/productionPhase')
 
