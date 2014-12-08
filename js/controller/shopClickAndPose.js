@@ -55,12 +55,14 @@ var documentKeyDown = function( e ){
             x: Math.floor( x ),
             y: Math.floor( y )
         }
-        
+
         this.controlState.pose.accept = this.kitchen.check( m.shape , m.origin )
     }
 }
 
 var shopMouseDown = function( data ){
+
+    cleanUp.call(this)
 
     document.addEventListener('mousedown', this.documentMouseDown, false)
     document.addEventListener('keydown', this.documentKeyDown, false)
