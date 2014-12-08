@@ -11,33 +11,61 @@ var init = function( modelBall ){
     ed.listen( 'ui-shop-mousedown' , shopMouseDown.bind( this ) , this )
 
     this.documentMouseDown = documentMouseDown.bind( this )
+    this.documentKeyDown = documentKeyDown.bind( this )
 
     return this
+}
+
+
+var rotateArray = function( a ){
+    var r = []
+    for(var x=a[0].length;x--;){
+        r[x] = []
+        for(var y=a.length;y--;)
+            r[x][y] = a[y][ a[0].length - 1 - x]
+    }
+    a.length = 0
+    a.push.apply( a, r )
 }
 
 var documentMouseDown = function(){
     if( this.controlState.pose )
         cleanUp.call(this);
 }
+var documentKeyDown = function( e ){
+    if( this.controlState.pose ){
+        var m = this.controlState.pose.machine
+        switch( e.which ){
+            case 82 :
+                rotateArray( m.shape )
+                break
+            case 84 :
+                rotateArray( m.shape )
+                rotateArray( m.shape )
+                rotateArray( m.shape )
+                break
+            default :
+                return
+        }
+
+        var y = this.controlState.pose.center.y - m.shape.length / 2 + 0.5
+        var x = this.controlState.pose.center.x - m.shape[0].length /2 + 0.5
+
+        m.origin = {
+            x: Math.floor( x ),
+            y: Math.floor( y )
+        }
+        
+        this.controlState.pose.accept = this.kitchen.check( m.shape , m.origin )
+    }
+}
 
 var shopMouseDown = function( data ){
 
-    if( this.controlState.pose ){
-
-        if( this.controlState.pose.accept ){
-
-            // create a block
-
-            this.kitchen.addBlock()
-
-        }
-
-        cleanUp.call(this);
-        return
-    }
-
     document.addEventListener('mousedown', this.documentMouseDown, false)
+    document.addEventListener('keydown', this.documentKeyDown, false)
 
+    ed.listen( 'scene-mousedown' , mousedown.bind( this ) , this )
     ed.listen( 'scene-mouseup' , mouseup.bind( this ) , this )
     ed.listen( 'scene-mousemove' , mousemove.bind( this ) , this )
 
@@ -56,7 +84,9 @@ var shopMouseDown = function( data ){
 var cleanUp = function( ){
 
     document.removeEventListener('mousedown', this.documentMouseDown, false)
+    document.removeEventListener('mousedown', this.documentKeyDown, false)
 
+    ed.unlisten( 'scene-mousedown' , this )
     ed.unlisten( 'scene-mouseup' , this )
     ed.unlisten( 'scene-mousemove' , this )
 
@@ -64,12 +94,16 @@ var cleanUp = function( ){
 }
 
 var mousemove = function( data ){
-    console.log( data )
 
     var m = this.controlState.pose.machine
 
-    var y = data.gridY - m.shape.length / 2
-    var x = data.gridX - m.shape[0].length /2
+    this.controlState.pose.center = {
+        y: data.gridY,
+        x: data.gridX
+    }
+
+    var y = this.controlState.pose.center.y - m.shape.length / 2 + 0.5
+    var x = this.controlState.pose.center.x - m.shape[0].length /2 + 0.5
 
     m.origin = {
         x: Math.floor( x ),
@@ -79,8 +113,18 @@ var mousemove = function( data ){
     this.controlState.pose.accept = this.kitchen.check( m.shape , m.origin )
 
 }
+var mousedown = function( data ){
+    // TODO check left button
+    pose.call( this )
+}
 var mouseup = function( data ){
+    pose.call( this )
+}
 
+var pose = function(){
+    if( this.controlState.pose.accept )
+        this.kitchen.addBlock( this.controlState.pose.machine )
+    cleanUp.call( this )
 }
 
 

@@ -177,17 +177,31 @@ var render = function( ){
 
 }
 
+var shapeHash = function( a ){
+    var x=0
+    return a.reduce(function(p,a){
+        return p + 'x'+a.reduce(function(p,a){
+            return p + ''+(a+''+(x++))
+        },'|')
+    },'')
+}
+
 var renderFlyingMachine = function(){
     if( this.controlState.pose ){
 
         var m = this.controlState.pose.machine
 
-        if(!this._flying){
+        if(!this._flying || ( this._flying.shapeHash != shapeHash( m.shape ) )){
+
+            if( this._flying )
+                this.layer.remove( this._flying )
+
             this._flying = buildMachine( m )
+            this._flying.shapeHash = shapeHash( m.shape )
         }
 
         var material = this._flying.children[0].material
-        material.color = new THREE.Color( this.controlState.pose.accept ? 0xaf1213 : 0xaeb114 );
+        material.color = new THREE.Color( !this.controlState.pose.accept ? 0xaf1213 : 0x3eb114 );
         material.transparent = true
         material.opacity = 0.5
 
