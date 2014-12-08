@@ -8,6 +8,7 @@ var testFactory = require('../tests/sampleFactory')
   , controlState = Object.create( require('./model/ControlState') )
 
   , shopClickAndPose = Object.create( require('./controller/shopClickAndPose') )
+  , traceConveyor = Object.create( require('./controller/traceConveyor') )
 
   , storeSystem = Object.create( require('./system/StoreSystem'))
   , deleteSystem = Object.create( require('./system/DeleteSystem'))
@@ -34,6 +35,7 @@ var ui = Object.create( UI ).init()
 
 // controller
 shopClickAndPose.init( modelBall )
+traceConveyor.init( modelBall )
 
 // test
 testFactory.copyKitchen( kitchen , 9 )

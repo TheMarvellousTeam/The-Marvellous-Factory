@@ -1,9 +1,9 @@
-var steel = THREE.ImageUtils.loadTexture( "../DessinsTM/4848/steel.gif" ); 
-steel.wrapS = steel.wrapT = THREE.RepeatWrapping; 
+var steel = THREE.ImageUtils.loadTexture( "../DessinsTM/4848/steel.gif" );
+steel.wrapS = steel.wrapT = THREE.RepeatWrapping;
 steel.repeat.set( 1, 1 );
 
-var belt = THREE.ImageUtils.loadTexture( "../DessinsTM/4848/tapis1.gif" ); 
-belt.wrapS = THREE.RepeatWrapping; 
+var belt = THREE.ImageUtils.loadTexture( "../DessinsTM/4848/tapis1.gif" );
+belt.wrapS = THREE.RepeatWrapping;
 belt.wrapT = THREE.RepeatWrapping;
 belt.repeat.set( 1, 1 );
 
@@ -174,9 +174,16 @@ var render = function( ){
 
 
     renderFlyingMachine.call( this )
+    renderFlyingConveyor.call( this )
 
 }
 
+var arrayHash = function( a ){
+    var x=0
+    return 'x'+a.reduce(function(p,a){
+        return p + ''+(a+''+(x++))
+    },'|')
+}
 var shapeHash = function( a ){
     var x=0
     return a.reduce(function(p,a){
@@ -198,6 +205,7 @@ var renderFlyingMachine = function(){
 
             this._flying = buildMachine( m )
             this._flying.shapeHash = shapeHash( m.shape )
+            this.layer.add( this._flying )
         }
 
         var material = this._flying.children[0].material
@@ -208,11 +216,41 @@ var renderFlyingMachine = function(){
         this._flying.position.x = m.origin.x
         this._flying.position.z = m.origin.y
 
-        this.layer.add( this._flying )
+
 
     }else if( this._flying ){
         this.layer.remove( this._flying )
         this._flying = null
+    }
+}
+
+
+var renderFlyingConveyor = function(){
+    if( this.controlState.conveyor ){
+
+        var path = this.controlState.conveyor.path
+
+        if(!this._flyingConveyor || ( this._flyingConveyor.pathHash != arrayHash( path ) )){
+
+            if( this._flyingConveyor )
+                this.layer.remove( this._flyingConveyor )
+
+            this._flyingConveyor = new THREE.Object3D()
+
+            for( var i=path.length;i--;){
+                var b = buildConv( path[i] )
+                this._flyingConveyor.add( b )
+                b.position.x = path[i].origin.x
+                b.position.y = path[i].origin.y
+            }
+
+            this._flyingConveyor.pathHash = arrayHash( path )
+            this.layer.add( this._flyingConveyor )
+        }
+
+    }else if( this._flyingConveyor ){
+        this.layer.remove( this._flyingConveyor )
+        this._flyingConveyor = null
     }
 }
 

@@ -8,7 +8,7 @@ var init = function( modelBall ){
     this.controlState = modelBall.controlState
     this.kitchen = modelBall.kitchen
 
-    ed.listen( 'ui-shop-mousedown' , shopMouseDown.bind( this ) , this )
+    ed.listen( 'ui-shop-machine-mousedown' , shopMouseDown.bind( this ) , this )
 
     this.documentMouseDown = documentMouseDown.bind( this )
     this.documentKeyDown = documentKeyDown.bind( this )
@@ -86,7 +86,7 @@ var shopMouseDown = function( data ){
 var cleanUp = function( ){
 
     document.removeEventListener('mousedown', this.documentMouseDown, false)
-    document.removeEventListener('mousedown', this.documentKeyDown, false)
+    document.removeEventListener('keydown', this.documentKeyDown, false)
 
     ed.unlisten( 'scene-mousedown' , this )
     ed.unlisten( 'scene-mouseup' , this )

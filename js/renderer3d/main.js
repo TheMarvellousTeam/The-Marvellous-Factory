@@ -67,7 +67,17 @@ var init = function( modelBall ) {
 
     this.userInput = Object.create( userInput ).init( this.scene , this.camera, this.renderer.domElement )
 
+    ed.listen( 'scene-stop-drag', enableCameraControl.bind(this) , this )
+    ed.listen( 'scene-start-drag', disableCameraControl.bind(this) , this )
+
     return this
+}
+
+var enableCameraControl = function(){
+    this.controls.enabled = true
+}
+var disableCameraControl = function(){
+    this.controls.enabled = false
 }
 
 var render = function( kitchen ){
