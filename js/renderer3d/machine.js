@@ -8,6 +8,22 @@ belt.wrapT = THREE.RepeatWrapping;
 belt.repeat.set( 1, 1 );
 
 
+
+var ghostMat  =new THREE.MeshPhongMaterial( {
+    color: 0x3eb114,
+    transparent: true,
+    opacity: 0.4,
+    shininess : 2,
+    specular: 0xFFFFFF,
+});
+var ghostMat2  =new THREE.MeshPhongMaterial( {
+    color: 0xaf1213,
+    transparent: true,
+    opacity: 0.4,
+    shininess : 2,
+    specular: 0xFFFFFF,
+} );
+
 var init = function( modelBall ){
     this.layer = new THREE.Object3D()
 
@@ -206,7 +222,7 @@ var render = function( ){
 var arrayHash = function( a ){
     var x=0
     return 'x'+a.reduce(function(p,a){
-        return p + ''+(a+''+(x++))
+        return p + ''+(a.x+''+a.y+' '+(x++))
     },'|')
 }
 var shapeHash = function( a ){
@@ -263,10 +279,10 @@ var renderFlyingConveyor = function(){
             this._flyingConveyor = new THREE.Object3D()
 
             for( var i=path.length;i--;){
-                var b = buildConv( path[i] )
+                var b = new THREE.Mesh( buildMachineBody(), ghostMat )
                 this._flyingConveyor.add( b )
-                b.position.x = path[i].origin.x
-                b.position.y = path[i].origin.y
+                b.position.x = path[i].x + 0.5
+                b.position.z = path[i].y + 0.5
             }
 
             this._flyingConveyor.pathHash = arrayHash( path )

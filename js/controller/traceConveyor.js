@@ -42,9 +42,13 @@ var shopMouseDown = function( data ){
     ed.listen( 'scene-mousemove' , mousemove1.bind( this ) , 'conv1' )
 
     window.setTimeout(function(){
+
+
+
         this.controlState.conveyor = {
-            path : []
+            path : [ {x:0, y:0} ]
         }
+
     }.bind(this),0)
 }
 
@@ -65,9 +69,11 @@ var mousemove1 = function( data ){
 
     var path = this.controlState.conveyor.path
 
-    var x = Math.round( data.gridX + 0.5 )
-    var y = Math.round( data.gridY + 0.5 )
+    var x = Math.round( data.gridX - 0.5 )
+    var y = Math.round( data.gridY - 0.5 )
 
+    path[0].x = x
+    path[0].y = y
 }
 var mousedown1 = function( data ){
 
@@ -84,8 +90,14 @@ var mousemove2 = function( data ){
 
     var path = this.controlState.conveyor.path
 
-    var x = Math.round( data.gridX + 0.5 )
-    var y = Math.round( data.gridY + 0.5 )
+    var x = Math.round( data.gridX - 0.5 )
+    var y = Math.round( data.gridY - 0.5 )
+
+    for( var i=0;i<path.length;i++)
+        if( path[i].x ==x && path[i].y ==y )
+            break
+
+    path.splice(i,Infinity,{x:x,y:y})
 
 }
 var mouseup2 = function( data ){

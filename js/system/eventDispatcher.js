@@ -7,7 +7,7 @@ var dispatch = function( eventName, data ){
     for( var i = l.length; i--;)
         l[i].fn(data, eventName)
 
-    if(true)
+    if(!true)
         switch(eventName){
             case 'update':
             case 'post-update':
