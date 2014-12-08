@@ -16,15 +16,18 @@ var initSpriteMaterial = function(){
 
     this.spriteMaterials = {}
 
-    var texture = THREE.ImageUtils.loadTexture( "./assets/crab-colour-reduce.svg" );
+    var texture = THREE.ImageUtils.loadTexture( "../DessinsTM/4848/poisson2.gif" );
     this.spriteMaterials[ 'B' ] = new THREE.SpriteMaterial( { map: texture, fog: true } );
 
-    var texture = THREE.ImageUtils.loadTexture( "./assets/crab.svg" );
+    var texture = THREE.ImageUtils.loadTexture( "./assets/crab-colour-reduce.svg" );
     this.spriteMaterials[ 'A' ] = new THREE.SpriteMaterial( { map: texture, fog: true } );
 
-    this.spriteMaterials[ 'C' ] = new THREE.SpriteMaterial( { color:'#f127ff', fog: true } );
-    this.spriteMaterials[ 'D' ] = new THREE.SpriteMaterial( { color:'#12123f', fog: true } );
-    this.spriteMaterials[ 'default' ] = new THREE.SpriteMaterial( { color:'#ffffff', fog: true } );
+    var texture = THREE.ImageUtils.loadTexture( "../DessinsTM/4848/poisson3.gif" );
+    this.spriteMaterials[ 'C' ] = new THREE.SpriteMaterial( { map:texture, fog: true } );
+
+    var texture = THREE.ImageUtils.loadTexture( "../DessinsTM/4848/poisson4.gif" );
+    this.spriteMaterials[ 'D' ] = new THREE.SpriteMaterial( { map:texture, fog: true } );
+    this.spriteMaterials[ 'default' ] = new THREE.SpriteMaterial( { map:texture, fog: true } );
 }
 
 var remove = function( data ){

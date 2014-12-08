@@ -1,3 +1,12 @@
+var steel = THREE.ImageUtils.loadTexture( "../DessinsTM/4848/steel.gif" ); 
+steel.wrapS = steel.wrapT = THREE.RepeatWrapping; 
+steel.repeat.set( 1, 1 );
+
+var belt = THREE.ImageUtils.loadTexture( "../DessinsTM/4848/tapis1.gif" ); 
+belt.wrapS = THREE.RepeatWrapping; 
+belt.wrapT = THREE.RepeatWrapping;
+belt.repeat.set( 1, 1 );
+
 
 var init = function( info ){
     this.layer = new THREE.Object3D()
@@ -57,8 +66,8 @@ var buildMachineOpening = function( ){
     return top
 }
 
-var buildConvBody = function( ){
-    var bottom = new THREE.BoxGeometry( 1, 0.4, 1 );
+var buildConvBody = function( materials ){
+    var bottom = new THREE.BoxGeometry( 1, 0.4, 1, materials );
     bottom.applyMatrix( (new THREE.Matrix4()).setPosition(new THREE.Vector3(0,0.2,0) ) )
     return bottom
 }
@@ -66,9 +75,9 @@ var buildConvBody = function( ){
 var buildMachine = function( block ){
     var container = new THREE.Object3D()
 
-    var color = 0|(Math.random()*(255*255*255))
     var material = new THREE.MeshPhongMaterial( {
-        color: color,
+        color: 0xD0D9D9,
+        map: steel,
         shininess : 12,
         specular: 0xFFFFFF,
 
@@ -102,20 +111,30 @@ var buildMachine = function( block ){
 var buildConv = function( block ){
     var container = new THREE.Object3D()
 
-    var color = 0|(Math.random()*(255*255*255))
-    var material = new THREE.MeshPhongMaterial( {
-        color: color,
+    var materialBelt = new THREE.MeshPhongMaterial( {
+        color: 0xD0D9D9,
+        map: belt,
         shininess : 1,
         specular: 0xFFFFFF,
 
     } );
+
+    var materialSteel = new THREE.MeshPhongMaterial( {
+        color: 0xD0D9D9,
+        map: steel,
+        shininess : 12,
+        specular: 0xFFFFFF,
+
+    } );
+
+    var materials = [materialSteel, materialSteel, materialBelt, materialSteel, materialSteel, materialSteel];
 
     for(var y=block.shape.length; y--; )
     for(var x=block.shape[y].length; x--; )
         {
             if( block.shape[y][x] > 0 )
             {
-                var cube = new THREE.Mesh( buildConvBody(), material );
+                var cube = new THREE.Mesh( buildConvBody(), new THREE.MeshFaceMaterial(materials) );
                 cube.position.x = x+0.5
                 cube.position.z = y+0.5
 
