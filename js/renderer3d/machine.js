@@ -8,8 +8,12 @@ belt.wrapT = THREE.RepeatWrapping;
 belt.repeat.set( 1, 1 );
 
 
-var init = function( info ){
+var init = function( modelBall ){
     this.layer = new THREE.Object3D()
+
+    this.kitchen = modelBall.kitchen
+    this.controlState = modelBall.controlState
+
     return this
 }
 
@@ -146,11 +150,11 @@ var buildConv = function( block ){
 
 
 var renderId=0
-var render = function( blocks ){
+var render = function( ){
     var layer = this.layer
 
     renderId ++
-    blocks.forEach(function(block){
+    this.kitchen.blocks.forEach(function(block){
         var visual;
         if (!(visual = block._visual)){
             block._visual = visual = block.type == 'conveyor' ? buildConv( block ) : buildMachine( block )
@@ -168,6 +172,34 @@ var render = function( blocks ){
     // TODO clean up useless visual
     this.layer.children
 
+
+    renderFlyingMachine.call( this )
+
+}
+
+var renderFlyingMachine = function(){
+    if( this.controlState.pose ){
+
+        var m = this.controlState.pose.machine
+
+        if(!this._flying){
+            this._flying = buildMachine( m )
+        }
+
+        var material = this._flying.children[0].material
+        material.color = new THREE.Color( this.controlState.pose.accept ? 0xaf1213 : 0xaeb114 );
+        material.transparent = true
+        material.opacity = 0.5
+
+        this._flying.position.x = m.origin.x
+        this._flying.position.z = m.origin.y
+
+        this.layer.add( this._flying )
+
+    }else if( this._flying ){
+        this.layer.remove( this._flying )
+        this._flying = null
+    }
 }
 
 module.exports = {

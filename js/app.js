@@ -5,6 +5,7 @@ var testFactory = require('../tests/sampleFactory')
 
   , kitchen = Object.create( require('./model/Kitchen') )
   , gameState = Object.create( require('./model/GameState') )
+  , controlState = Object.create( require('./model/ControlState') )
 
   , shopClickAndPose = Object.create( require('./controller/shopClickAndPose') )
 
@@ -16,11 +17,13 @@ var testFactory = require('../tests/sampleFactory')
 // init model
 kitchen.init()
 gameState.init()
+controlState.init()
 
 // init system
 var modelBall = {
     kitchen: kitchen,
-    gameState: gameState
+    gameState: gameState,
+    controlState: controlState
 }
 
 productionPhase.init( modelBall )

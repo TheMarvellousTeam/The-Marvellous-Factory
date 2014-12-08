@@ -41,7 +41,7 @@ var mouseEvent = function( event ){
 
         ed.dispatch( eventName , {
             gridX : intersects[ 0 ].point.x ,
-            gridY : 16 - intersects[ 0 ].point.z ,
+            gridY : intersects[ 0 ].point.z ,
         })
     }
 
