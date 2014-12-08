@@ -1,4 +1,6 @@
 var Abstract = require('../utils/Abstract')
+  , machine = require('../data/machine')
+  , ed = require('../system/eventDispatcher')
 
 /*
  * shapes : [][] contains for each cells :
@@ -29,9 +31,41 @@ var clone = function(block) {
 	return this;
 }
 
+var init = function( type ){
+
+    this.type = type
+
+    this.shape = []
+    for(var y=machine[ type ].shape.length;y--;){
+        this.shape[y] = []
+        for(var x=machine[ type ].shape[y].length;x--;){
+            this.shape[y][x] = machine[ type ].shape[y][x]
+        }
+    }
+
+    this.origin = {
+        x: 0,
+        y: 0
+    }
+
+    ed.dispatch( 'machine-spawn', {
+        machine: this
+    })
+
+    return this
+}
+
+var remove = function(){
+    ed.dispatch( 'machine-removed', {
+        machine: this
+    })
+}
+
 module.exports = Object.create( Abstract )
 .extend({
     getInputs : function(){ return getSymbols.call(this,2)},
     getOutputs : function(){ return getSymbols.call(this,3)},
-    clone: clone
+    clone: clone,
+    init: init,
+    remove: remove
 })

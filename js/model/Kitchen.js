@@ -22,9 +22,9 @@ var check = function(shape,origin) {
     for(var y=shape.length; y--; )
     for(var x=shape[y].length; x--; )
         if( (shape[y][x] == 1 || shape[y][x] == 3 ) &&
-            y+origin.y < 0 || y+origin.y >= this.height ||
+            ( y+origin.y < 0 || y+origin.y >= this.height ||
             x+origin.x < 0 || x+origin.x >= this.width ||
-            this.availablesCells[y+origin.y][x+origin.x] )
+            this.availablesCells[y+origin.y][x+origin.x] ) )
             return false
     return true
 }

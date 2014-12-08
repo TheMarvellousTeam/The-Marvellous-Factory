@@ -55,9 +55,9 @@ var init = function( modelBall ) {
     this.kitchen = modelBall.kitchen
     this.tokenPool = modelBall.tokenPool
 
-    this.machineRenderer = Object.create( machineRenderer ).init(  )
-    this.gridRenderer = Object.create( gridRenderer ).init(  )
-    this.tokenRenderer = Object.create( tokenRenderer ).init(  )
+    this.machineRenderer = Object.create( machineRenderer ).init( modelBall )
+    this.gridRenderer = Object.create( gridRenderer ).init( modelBall )
+    this.tokenRenderer = Object.create( tokenRenderer ).init( modelBall )
 
     this.scene.add( this.machineRenderer.layer )
     this.scene.add( this.tokenRenderer.layer )
