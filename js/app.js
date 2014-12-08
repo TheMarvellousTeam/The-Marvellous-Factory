@@ -1,10 +1,12 @@
 var testFactory = require('../tests/sampleFactory')
   , mainRenderer = require('./renderer3d/main')
   , menuRenderer = require('./rendererUI/Menu')
+  , UI = require('./rendererUI/main')
 
   , kitchen = Object.create( require('./model/Kitchen') )
   , gameState = Object.create( require('./model/GameState') )
-  , store = Object.create( require('./model/Store') )
+
+  , shopClickAndPose = Object.create( require('./controller/shopClickAndPose') )
 
   , storeSystem = Object.create( require('./system/StoreSystem'))
   , deleteSystem = Object.create( require('./system/DeleteSystem'))
@@ -14,12 +16,10 @@ var testFactory = require('../tests/sampleFactory')
 // init model
 kitchen.init()
 gameState.init()
-store.init()
 
 // init system
 var modelBall = {
     kitchen: kitchen,
-    store: store,
     gameState: gameState
 }
 
@@ -27,7 +27,10 @@ productionPhase.init( modelBall )
 
 // init renderer
 var renderer = Object.create( mainRenderer ).init( modelBall )
-var menu = Object.create( menuRenderer ).init()
+var ui = Object.create( UI ).init()
+
+// controller
+shopClickAndPose.init( modelBall )
 
 // test
 testFactory.copyKitchen( kitchen , 8 )
@@ -41,7 +44,6 @@ window.requestAnimationFrame(function cycle(){
 
     eventDispatcher.dispatch('pre-render')
     renderer.render()
-    menu.render()
     eventDispatcher.dispatch('post-render')
 
     window.requestAnimationFrame(cycle)

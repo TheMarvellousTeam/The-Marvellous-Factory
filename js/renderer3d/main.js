@@ -12,13 +12,7 @@ var bootstrapThree = function(){
 	camera.position.z = 7;
 	camera.position.y = 20;
 
-	var controls = this.controls =  new THREE.OrbitControls( camera );
-	controls.center.x = 8
-	controls.center.y = 1
-	controls.center.z = 8
-	controls.addEventListener( 'change', function render() {
-        ed.dispatch('render3D-camera-change')
-    });
+
 
 	var scene = this.scene = new THREE.Scene();
 
@@ -42,8 +36,15 @@ var bootstrapThree = function(){
 	var renderer = this.renderer = new THREE.WebGLRenderer( );
 	renderer.setSize( window.innerWidth, window.innerHeight );
 
-	//document.body.appendChild( renderer.domElement );
     document.getElementById("gamescreen").appendChild(renderer.domElement);
+
+    var controls = this.controls =  new THREE.OrbitControls( camera , renderer.domElement );
+    controls.center.x = 8
+    controls.center.y = 1
+    controls.center.z = 8
+    controls.addEventListener( 'change', function render() {
+        ed.dispatch('render3D-camera-change')
+    });
 
 }
 

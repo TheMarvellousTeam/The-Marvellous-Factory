@@ -51,5 +51,58 @@ module.exports = {
         cost: 1,
     },
 
+    'cutter': {
+        description: 'This fucking machine cut fucking things',
+        recipes: [
+            {
+                inputs : {
+                    'ugly fish': 1,
+                },
+                outputs : {
+                    'cut fish': 1,
+                },
+                delay : 50
+            },
+            {
+                inputs : {
+                    'drunk shrimp': 1,
+                },
+                outputs : {
+                    'cut shrimp': 1,
+                },
+                delay : 50
+            },
+        ],
+        storage: 1,
+        shape:[
+            [0,2,0],
+            [1,1,1],
+            [1,3,1],
+        ],
+        cost: 1,
+    },
+
+    'rice cooker': {
+        description: 'Like a boiling stuff I guess, but rice on it',
+        recipes: [
+            {
+                inputs : {
+                    'rice': 8,
+                },
+                outputs : {
+                    'cooked rice': 8,
+                },
+                delay : 250
+            },
+        ],
+        storage: 8,
+        shape:[
+            [0,2,0],
+            [1,1,1],
+            [1,1,1],
+            [1,3,1],
+        ],
+        cost: 1,
+    },
 
 }

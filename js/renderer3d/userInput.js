@@ -12,7 +12,7 @@ var mouseEvent = function( event ){
             eventName = 'scene-mouseup'
             break
         case 'mousemove' :
-            eventName = 'scene-mouseup'
+            eventName = 'scene-mousemove'
             break
         default :
             return
@@ -40,8 +40,8 @@ var mouseEvent = function( event ){
     if ( intersects.length > 0 ) {
 
         ed.dispatch( eventName , {
-            gridX : intersects[ 0 ].point.x - 8,
-            gridY : intersects[ 0 ].point.y - 8,
+            gridX : intersects[ 0 ].point.x ,
+            gridY : 16 - intersects[ 0 ].point.z ,
         })
     }
 

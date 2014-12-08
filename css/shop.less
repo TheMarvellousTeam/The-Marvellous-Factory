@@ -1,0 +1,68 @@
+.shop{
+
+    @dark-color: #333;
+    @bright-color: #BB822A;
+
+    padding: 14px;
+
+    position: fixed;
+    background: #F4F3E0;
+    top: 10px;
+    right: 10px;
+    border-bottom: solid 4px @bright-color;
+
+
+
+    color : @dark-color;
+
+    h1 {
+
+        color : @bright-color;
+        font-size: 46px;
+        font-weight: bold;
+        text-shadow: 2px 2px #fff, 4px 4px @dark-color;
+
+        &:before,
+        &:after{
+            content:'';
+            display:inline-block;
+            width:0.5em;
+            height:0.08em;
+            border-top: solid 2px @bright-color;
+            border-bottom: solid 2px @bright-color;
+            margin: 6px 15px;
+        }
+    }
+
+    h3 {
+    }
+
+
+
+    .shop-machines {
+
+        .machine{
+
+            margin-bottom: 10px;
+            cursor:pointer;
+
+            h3 {
+                display: inline-block;
+                margin: 0;
+                line-height: 48px;
+                vertical-align: top;
+                margin-left: 14px;
+            }
+            & > span {
+                display: inline-block;
+                width: 48px;
+                height: 48px;
+                border-radius: 9999px;
+                background-size: contain;
+                border: solid 2px @bright-color;
+                box-shadow: 0 1px 6px rgba(51, 51, 51, 0.51);
+            }
+        }
+    }
+
+}

@@ -75,7 +75,7 @@ gulp.task('less', function () {
                     f[f.length-1] = 'css'
 
                     file.path = f.join('.')
-                    file.contents = new Buffer(css||'')
+                    file.contents = new Buffer(css.css||'')
                     stream.emit('data',file)
 
                     pending--
@@ -93,7 +93,7 @@ gulp.task('less', function () {
         return stream
     }
 
-    return gulp.src( './css/app.less' )
+    return gulp.src( './css/style.less' )
     .pipe( lessify({
         compress: false,
         paths: ['./css'],
@@ -102,18 +102,18 @@ gulp.task('less', function () {
         cascade: true,
         browsers: ['last 2 versions'],
     }))
-    .pipe(rename('bundle.css'))
+    .pipe(rename('style.css'))
     .pipe(gulp.dest('./css'))
 });
 
 
 gulp.task('watch', function () {
 
-	//gulp.watch( ['css/**/*.less'] , ['less'] )
+	gulp.watch( ['css/**/*.less'] , ['less'] )
 
 	gulp.watch( ['tests/**/*' , 'js/**/*', '!js/bundle.js'] , ['browserify'] )
 
 });
 
 
-gulp.task('default', [ 'browserify' , 'watch' , 'serve' ]);
+gulp.task('default', [ 'browserify' , 'less' , 'watch' , 'serve' ]);
