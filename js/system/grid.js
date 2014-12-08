@@ -10,7 +10,7 @@ var around = (function(){
 
     return function( fn , tab , cx , cy ){
 
-        for(var i=4;dir.length; i--){
+        for(var i=4; i--;){
             var x = cx + dir[i].x
             var y = cy + dir[i].y
 
@@ -28,7 +28,7 @@ var findAround = function( tab, symbol , cx , cy ){
     around(function(x,y,val){
         if( val == symbol )
             t.push({x:x, y:y})
-    })
+    }, tab, cx , cy)
     return t
 }
 

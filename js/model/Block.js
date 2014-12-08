@@ -35,11 +35,13 @@ var init = function( type ){
 
     this.type = type
 
+    var patron = machine[ type ] || {}
+
     this.shape = []
-    for(var y=machine[ type ].shape.length;y--;){
+    for(var y=(patron.shape||[]).length;y--;){
         this.shape[y] = []
-        for(var x=machine[ type ].shape[y].length;x--;){
-            this.shape[y][x] = machine[ type ].shape[y][x]
+        for(var x=patron.shape[y].length;x--;){
+            this.shape[y][x] = patron.shape[y][x]
         }
     }
 

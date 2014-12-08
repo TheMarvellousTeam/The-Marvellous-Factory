@@ -32,8 +32,11 @@ var check = function(shape,origin) {
 var addBlock = function(block) {
     for(var y=block.shape.length; y--; )
     for(var x=block.shape[y].length; x--; )
-        if( block.shape[y][x] == 1 || block.shape[y][x] == 3 ){
-            this.availablesCells[y+block.origin.y][x+block.origin.x] = 1;
+        if( block.shape[y][x] > 1 ){
+            if( this.availablesCells[y+block.origin.y][x+block.origin.x] + block.shape[y][x] == 5 )
+                this.availablesCells[y+block.origin.y][x+block.origin.x] = 5;
+            else
+                this.availablesCells[y+block.origin.y][x+block.origin.x] = block.shape[y][x];
             this.blockRef[y+block.origin.y][x+block.origin.x] = block;
         }
     this.blocks.push(block)

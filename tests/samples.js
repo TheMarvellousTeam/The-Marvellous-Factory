@@ -415,6 +415,13 @@ module.exports = [
             ]
         },
         {
+            origin: {x:1,y:5},
+            type: 'conveyor',
+            shape: [
+                [2,3]
+            ]
+        },
+        {
             origin: {x:4,y:7},
             type: 'conveyor',
             shape: [
@@ -422,7 +429,21 @@ module.exports = [
             ]
         },
         {
-            origin: {x:4,y:5},
+            origin: {x:2,y:5},
+            type: 'conveyor',
+            shape: [
+                [2,1,3]
+            ]
+        },
+        {
+            origin: {x:2,y:7},
+            type: 'conveyor',
+            shape: [
+                [2,1,3]
+            ]
+        },
+        {
+            origin: {x:1,y:5},
             type: 'emiter',
             tokenType: 'B',
             shape: [
@@ -430,7 +451,7 @@ module.exports = [
             ]
         },
         {
-            origin: {x:4,y:7},
+            origin: {x:2,y:7},
             type: 'emiter',
             tokenType: 'A',
             shape: [
@@ -469,9 +490,57 @@ module.exports = [
         },
         {
             origin: {x:13,y:6},
+            type: 'conveyor',
+            shape: [
+                [2],
+                [3]
+            ]
+        },
+        {
+            origin: {x:13,y:7},
+            type: 'conveyor',
+            shape: [
+                [2],
+                [3]
+            ]
+        },
+        {
+            origin: {x:13,y:8},
+            type: 'conveyor',
+            shape: [
+                [2],
+                [3]
+            ]
+        },
+        {
+            origin: {x:13,y:9},
+            type: 'conveyor',
+            shape: [
+                [2],
+                [3]
+            ]
+        },
+        {
+            origin: {x:13,y:10},
+            type: 'conveyor',
+            shape: [
+                [2,3],
+            ]
+        },
+        {
+            origin: {x:14,y:10},
+            type: 'conveyor',
+            shape: [
+                [2,3],
+            ]
+        },
+        {
+            origin: {x:15,y:10},
             type: 'receiver',
             shape: [
-                [2,1]
+                [2],
+                [1],
+                [1],
             ]
         }
     ]

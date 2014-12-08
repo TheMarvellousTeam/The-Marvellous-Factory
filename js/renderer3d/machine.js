@@ -290,7 +290,7 @@ var renderFlyingConveyor = function(){
             this._flyingConveyor = new THREE.Object3D()
 
             for( var i=path.length;i--;){
-                var b = new THREE.Mesh( buildMachineBody(), ghostMat )
+                var b = new THREE.Mesh( buildMachineBody(), this.controlState.conveyor.accept ? ghostMat2 : ghostMat )
                 this._flyingConveyor.add( b )
                 b.position.x = path[i].x + 0.5
                 b.position.z = path[i].y + 0.5
