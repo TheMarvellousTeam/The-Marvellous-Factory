@@ -44,8 +44,8 @@ THREE.OrbitControls = function ( object, domElement ) {
 	this.zoomSpeed = 1.0;
 
 	// Limits to how far you can dolly in and out
-	this.minDistance = 0;
-	this.maxDistance = Infinity;
+	this.minDistance = 5;
+	this.maxDistance = 20;
 
 	// Set to true to disable this control
 	this.noRotate = false;
@@ -62,7 +62,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 	// How far you can orbit vertically, upper and lower limits.
 	// Range is 0 to Math.PI radians.
 	this.minPolarAngle = 0; // radians
-	this.maxPolarAngle = Math.PI; // radians
+	this.maxPolarAngle = Math.PI/2; // radians
 
 	// How far you can orbit horizontally, upper and lower limits.
 	// If set, must be a sub-interval of the interval [ - Math.PI, Math.PI ].
@@ -657,7 +657,7 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 	this.domElement.addEventListener( 'contextmenu', function ( event ) { event.preventDefault(); }, false );
 	this.domElement.addEventListener( 'mousedown', onMouseDown, false );
-	//this.domElement.addEventListener( 'mousewheel', onMouseWheel, false );
+	this.domElement.addEventListener( 'mousewheel', onMouseWheel, false );
 	this.domElement.addEventListener( 'DOMMouseScroll', onMouseWheel, false ); // firefox
 
 	this.domElement.addEventListener( 'touchstart', touchstart, false );

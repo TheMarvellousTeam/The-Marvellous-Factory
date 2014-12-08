@@ -422,19 +422,19 @@ module.exports = [
             ]
         },
         {
-            origin: {x:3,y:5},
+            origin: {x:4,y:5},
             type: 'emiter',
             tokenType: 'B',
             shape: [
-                [0,3]
+                [3]
             ]
         },
         {
-            origin: {x:3,y:7},
+            origin: {x:4,y:7},
             type: 'emiter',
             tokenType: 'A',
             shape: [
-                [0,3]
+                [3]
             ]
         },
         {
@@ -468,12 +468,10 @@ module.exports = [
             ]
         },
         {
-            origin: {x:13,y:5},
+            origin: {x:13,y:6},
             type: 'receiver',
             shape: [
-                [0,1],
-                [2,1],
-                [0,1]
+                [2,1]
             ]
         }
     ]

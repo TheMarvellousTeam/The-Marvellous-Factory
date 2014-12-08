@@ -84,7 +84,6 @@ var buildMachine = function( block ){
         map: steel,
         shininess : 12,
         specular: 0xFFFFFF,
-
     } );
 
     for(var y=block.shape.length; y--; )
@@ -100,8 +99,6 @@ var buildMachine = function( block ){
             }
             if( block.shape[y][x] == 2 || block.shape[y][x] == 3 )
             {
-                var geometry = new THREE.CylinderGeometry( 0.2, 0.2, 1.05 , 20 );
-
                 var cube = new THREE.Mesh( buildMachineOpening(), material );
                 cube.position.x = x+0.5
                 cube.position.z = y+0.5
@@ -112,6 +109,34 @@ var buildMachine = function( block ){
         }
     return container
 }
+
+var buildEmiter = function( block ) {
+    var container = new THREE.Object3D();
+
+    var material = new THREE.MeshPhongMaterial( {
+        color: 0xD0D9D9,
+        map: steel,
+        shininess : 12,
+        specular: 0xFFFFFF,
+    } );
+
+    var geometry = new THREE.CylinderGeometry( 0.2, 0.2, 50 , 20 );
+    var cylinder = new THREE.Mesh( geometry, material);
+    cylinder.position.x = 0.5;
+    cylinder.position.z = 0.5;
+    cylinder.position.y = 26;
+    container.add(cylinder);
+
+    var geometry = new THREE.CylinderGeometry( 0.2, 0.5, 0.5 , 20 );
+    var cylinder = new THREE.Mesh( geometry, material);
+    cylinder.position.x = 0.5;
+    cylinder.position.z = 0.5;
+    cylinder.position.y = 1.25;
+    container.add(cylinder);
+
+    return container;
+}
+
 var buildConv = function( block ){
     var container = new THREE.Object3D()
 
@@ -157,7 +182,7 @@ var render = function( ){
     this.kitchen.blocks.forEach(function(block){
         var visual;
         if (!(visual = block._visual)){
-            block._visual = visual = block.type == 'conveyor' ? buildConv( block ) : buildMachine( block )
+            block._visual = visual = block.type == 'conveyor' ? buildConv( block ) : (block.type == 'emiter' ? buildEmiter( block ) : buildMachine( block ));
             layer.add(visual)
         }
 
