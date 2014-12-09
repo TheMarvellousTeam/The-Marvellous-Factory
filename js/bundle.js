@@ -1037,11 +1037,11 @@ module.exports = {
 }
 
 },{}],13:[function(require,module,exports){
-var steel = THREE.ImageUtils.loadTexture( "../DessinsTM/4848/steel.gif" );
+var steel = THREE.ImageUtils.loadTexture( "/assets/DessinsTM/4848/steel.gif" );
 steel.wrapS = steel.wrapT = THREE.RepeatWrapping;
 steel.repeat.set( 1, 1 );
 
-var belt = THREE.ImageUtils.loadTexture( "../DessinsTM/4848/tapis1.gif" );
+var belt = THREE.ImageUtils.loadTexture( "/assets/DessinsTM/4848/tapis1.gif" );
 belt.wrapS = THREE.RepeatWrapping;
 belt.wrapT = THREE.RepeatWrapping;
 belt.repeat.set( 1, 1 );
@@ -1469,16 +1469,16 @@ var initSpriteMaterial = function(){
 
     this.spriteMaterials = {}
 
-    var texture = THREE.ImageUtils.loadTexture( "../DessinsTM/4848/poisson2.gif" );
+    var texture = THREE.ImageUtils.loadTexture( "/assets/DessinsTM/4848/poisson2.gif" );
     this.spriteMaterials[ 'B' ] = new THREE.SpriteMaterial( { map: texture, fog: true } );
 
-    var texture = THREE.ImageUtils.loadTexture( "./assets/crab-colour-reduce.svg" );
+    var texture = THREE.ImageUtils.loadTexture( "/assets/crab-colour-reduce.svg" );
     this.spriteMaterials[ 'C' ] = new THREE.SpriteMaterial( { map: texture, fog: true } );
 
-    var texture = THREE.ImageUtils.loadTexture( "../DessinsTM/4848/poisson3.gif" );
+    var texture = THREE.ImageUtils.loadTexture( "/assets/DessinsTM/4848/poisson3.gif" );
     this.spriteMaterials[ 'A' ] = new THREE.SpriteMaterial( { map:texture, fog: true } );
 
-    var texture = THREE.ImageUtils.loadTexture( "../DessinsTM/4848/poisson4.gif" );
+    var texture = THREE.ImageUtils.loadTexture( "/assets/DessinsTM/4848/poisson4.gif" );
     this.spriteMaterials[ 'D' ] = new THREE.SpriteMaterial( { map:texture, fog: true } );
     this.spriteMaterials[ 'default' ] = new THREE.SpriteMaterial( { map:texture, fog: true } );
 }
