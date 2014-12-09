@@ -5,4 +5,6 @@ The-Marvellous-Factory
 
 Ludum Dare #31
 
+[play](http://themarvellousteam.github.io/The-Marvellous-Factory)
+
 
