@@ -1,8 +1,8 @@
-var steel = THREE.ImageUtils.loadTexture( "../DessinsTM/4848/steel.gif" );
+var steel = THREE.ImageUtils.loadTexture( "/assets/DessinsTM/4848/steel.gif" );
 steel.wrapS = steel.wrapT = THREE.RepeatWrapping;
 steel.repeat.set( 1, 1 );
 
-var belt = THREE.ImageUtils.loadTexture( "../DessinsTM/4848/tapis1.gif" );
+var belt = THREE.ImageUtils.loadTexture( "/assets/DessinsTM/4848/tapis1.gif" );
 belt.wrapS = THREE.RepeatWrapping;
 belt.wrapT = THREE.RepeatWrapping;
 belt.repeat.set( 1, 1 );
